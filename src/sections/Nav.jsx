@@ -1,4 +1,4 @@
-import { headerLogo } from '../assets/images';
+import { headerLogo, sneakSpot } from '../assets/images';
 import { hamburger } from '../assets/icons';
 
 const Nav = () => {

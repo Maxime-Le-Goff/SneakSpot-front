@@ -7,14 +7,20 @@ import customer2 from './customer2.svg'
 
 import footerLogo from './footer-logo.svg'
 import headerLogo from './header-logo.svg'
+import sneakSpot from './sneakspot-logo.png'
 
 import offer from './offer.svg'
 
-import shoe4 from './shoe4.svg'
-import shoe5 from './shoe5.svg'
-import shoe6 from './shoe6.svg'
-import shoe7 from './shoe7.svg'
-import shoe8 from './shoe8.svg'
+import sneaker1 from './sneaker1.jpg'
+import sneaker2 from './sneaker2.jpg'
+import sneaker3 from './sneaker3.jpg'
+import sneaker4 from './sneaker4.jpg'
+import sneaker5 from './sneaker5.jpg'
+import sneaker6 from './sneaker6.jpg'
+import sneaker7 from './sneaker7.jpg'
+import sneaker8 from './sneaker8.jpg'
+import sneaker9 from './sneaker9.jpg'
+import sneaker10 from './sneaker10.jpg'
 
 import thumbnailBackground from './thumbnail-background.svg'
 import thumbnailShoe1 from './thumbnail-shoe1.svg'
@@ -31,13 +37,19 @@ export {
 
     footerLogo,
     headerLogo,
+    sneakSpot,
 
     offer,
-    shoe4,
-    shoe5,
-    shoe6,
-    shoe7,
-    shoe8,
+    sneaker1,
+    sneaker2,
+    sneaker3,
+    sneaker4,
+    sneaker5,
+    sneaker6,
+    sneaker7,
+    sneaker8,
+    sneaker9,
+    sneaker10,
 
     thumbnailBackground,
     thumbnailShoe1,
