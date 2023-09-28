@@ -1,7 +1,6 @@
 import { star } from "../assets/icons";
 
 const PopularProductCard = ({ model, rating, id, brand, description, img, price }) => {
-    console.log(rating);
   return (
     <div className="flex flex-1 flex-col w-full max-sm:w-full">
             <img
