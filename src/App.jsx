@@ -1,13 +1,37 @@
-import { Hero, SuperQuality, CustomerReviews, Footer, PopularProducts, Services, SpecialOffer, Nav, Subscribe} from './sections';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Hero, SuperQuality, CustomerReviews, Footer, PopularProducts, Services, Nav, Subscribe} from './sections';
 
-const App = () => (
+const App = () => {
+  const [shoes, setShoes] = useState([]);
+  const [bigImg, setBigImg] = useState();
+  const [popularProducts, setPopularProducts] = useState([]);
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/`)
+      .then(res => {
+        const productsArray = JSON.parse(res.data.products);
+        const popularProductsArray = JSON.parse(res.data.topRatedProducts);
+        setShoes(productsArray);
+        setBigImg(productsArray[0].img)
+        setPopularProducts(popularProductsArray);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])
+  return (
   <main className="relative">
     <Nav />
-  <section className="xl:padding-1 wide:padding-r padding-b">
-    <Hero />
+  <section className="xl:padding-l wide:padding-r padding-b">
+    <Hero
+      shoes={shoes}
+      bigImg={bigImg}
+    />
   </section>
   <section className="padding">
-  <PopularProducts />
+  <PopularProducts 
+    popularProducts={popularProducts}
+  />
   </section>
   <section className="padding">
   <SuperQuality />
@@ -16,7 +40,6 @@ const App = () => (
   <Services />
   </section>
   <section className="padding">
-  <SpecialOffer />
   </section>
   <section className="bg-pale-blue padding">
   <CustomerReviews ></CustomerReviews>
@@ -28,6 +51,7 @@ const App = () => (
   <Footer />
   </section>
   </main>
-)
+  )
+}
 
 export default App;

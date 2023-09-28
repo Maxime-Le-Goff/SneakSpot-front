@@ -22,6 +22,8 @@ import sneaker8 from './sneaker8.jpg'
 import sneaker9 from './sneaker9.jpg'
 import sneaker10 from './sneaker10.jpg'
 
+import shoe8 from './shoe8.svg'
+
 import thumbnailBackground from './thumbnail-background.svg'
 import thumbnailShoe1 from './thumbnail-shoe1.svg'
 import thumbnailShoe2 from './thumbnail-shoe2.svg'
@@ -50,6 +52,8 @@ export {
     sneaker8,
     sneaker9,
     sneaker10,
+
+    shoe8,
 
     thumbnailBackground,
     thumbnailShoe1,
