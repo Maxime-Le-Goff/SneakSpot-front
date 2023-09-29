@@ -1,5 +1,5 @@
 import { Outlet, useLoaderData } from "react-router-dom"
-import { Nav } from "../components"
+import { Footer, Nav } from "../components"
 
 
 
@@ -12,6 +12,9 @@ const Root = () => {
         <>
             <Nav brands={brands} sneakers={sneakers}/>
             <Outlet />
+            <section className="bg-black padding-x padding-t pb-8">
+            <Footer />
+            </section>
         </>
     )
 }

@@ -25,3 +25,15 @@ export const heroDataLoader = () => {
         })
         return res;
   }
+
+  export const allSneakersLoader = () => {
+        const res = axios.get(`http://localhost:8080/api/products`)
+       .then(res => {
+                const allSneakers = JSON.parse(res.data);
+                return {allSneakers};
+        })
+        .catch(err => {
+        console.log(err);
+        })
+        return res;
+  }

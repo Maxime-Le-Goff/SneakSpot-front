@@ -1,7 +1,6 @@
 import PopularProductCard from "../components/PopularProductCard"
 
 const PopularProducts = ({ popularProducts }) => {
-  console.log(popularProducts);
   return (
     <section
       id="products"

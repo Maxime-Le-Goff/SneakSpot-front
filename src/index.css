@@ -13,7 +13,7 @@
 }
 
 @layer components {
-  .max-container {
+  .max-container{
     max-width: 1440px;
     margin: 0 auto;
   }
@@ -61,4 +61,144 @@
   position:absolute;
   transform: translateX(-45%);
   border-radius: 1rem;
+}
+
+/* Sneaker Card */
+
+.card-03 {
+	position: relative;
+	min-width: 320px;
+  max-width: 320px;
+	height: 450px;
+	background: #ebf4f4;
+	border-radius: 15px;
+	overflow: hidden;
+} 
+.card-03 .contentBox-01 {
+	position: relative;
+	width: 100%;
+	height: 28%;
+}
+.card-03 .contentBox-01::after {
+	content: '';
+	position: absolute;
+	left: 16%;
+  top: -11%;
+  font-size: 9.5em;
+	font-weight: 800;
+	color: #c1d4ec34;
+	-webkit-text-fill-color: rgba(49, 100, 105, 0.231);
+	-webkit-text-stroke-width: 2px;
+}
+
+.card-03 .contentBox-01 span {
+	position: absolute;
+	top: 8%;
+	right: 6%;
+	color: #e2e2e2;
+	font-size: 20px;
+	z-index: 5;
+	cursor: pointer;
+}
+.card-03 .contentBox-01 .heart i {
+	color: #f00c0c;
+}
+.main-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.main-image img {
+	height: 250px;
+	position: absolute;
+	top: 57%;
+	z-index: 1;
+}
+.contentBox-02 {
+	height: 120px;
+}
+.sub-image {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.sub-image img {
+	height: 30px;
+	margin: 70px 7px 0px;
+	padding: 5px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: -10px -10px 10px rgba(230, 244,244,0.5),
+				5px 5px 5px rgba(70,70,70, 0.12);
+	cursor: pointer;
+	border: 1.5px solid #fff;
+}
+.card-03 .contentBox-02 .sub-image img:hover {
+	border: 1.5px solid #0b67df;
+} 
+.card-03 .contentBox-03 {
+	position: relative;
+	padding: 5px 20px 10px;
+}
+.card-03 .contentBox-03 .branding span:nth-child(1) {
+	font-size: 20px;
+	font-weight: 400;
+}
+.card-03 .contentBox-03 .branding h2 {
+	font-size: 12px;
+	font-weight: 500;
+	color: #464444;
+}
+.card-03 .contentBox-03 .ratings {
+	display: inline-block;
+	text-align: center;
+	line-height: 26px;
+	font-size: 10px;
+	cursor: pointer;
+	transition: all 0.5s ease;
+	color: #fcba26;
+}
+.card-03 .contentBox-03 .ratings:nth-child(5) {
+	color: #a7a7a7;
+}
+.card-03 .contentBox-03 .paragraph {
+	font-size: 11.5px;
+	color: #000;
+	font-weight: 500;
+}
+.card-03 .contentBox-03 .paragraph span {
+	color: #0b67df;
+	font-weight: 700;
+	cursor: pointer;
+}
+.card-03 .contentBox-03 .prices {
+	display: flex;
+	margin: 10px 0 10px;	
+}
+.card-03 .contentBox-03 .prices span {
+	font-size: 25px;
+	font-weight: 600;	
+}
+.card-03 .contentBox-03 .prices .space {
+	flex: 1;
+}
+.card-03 .contentBox-03 .prices span:nth-child(1) {
+	font-size: 20px;
+	font-weight: 400;
+	margin-top: 3px;
+	margin-right: 5px;
+}
+.card-03 .contentBox-03 .prices a {
+	font-size: 12px;
+	text-decoration: none;
+	border: none;
+	/* background-image: linear-gradient(to right,
+	#0a52af,
+  rgba(18, 117, 234)); */
+	color: #fff;
+	font-weight: 500;
+	letter-spacing: 1px;
+	padding: 10px 30px;
+	border-radius: 15px;
+	cursor: pointer;
 }

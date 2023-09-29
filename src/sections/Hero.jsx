@@ -1,15 +1,11 @@
 import Button from "../components/Button"
 import { arrowRight } from '../assets/icons'
 import ShoeCard from "../components/ShoeCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Hero = ({ shoes, bigImg }) => {
-  const [showBigImg, setShowBigImg] = useState();
-  useEffect(
-    () => {
-      setShowBigImg(bigImg);
-    }, [bigImg]
-  )
+  const [showBigImg, setShowBigImg] = useState(bigImg);
+
   return (
     <section 
       className="w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container"
