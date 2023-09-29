@@ -56,3 +56,9 @@
     @apply font-montserrat text-slate-gray text-lg leading-7;
   }
 }
+.nav-hover {
+  background-color: #FF6452;
+  position:absolute;
+  transform: translateX(-45%);
+  border-radius: 1rem;
+}

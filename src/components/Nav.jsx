@@ -4,24 +4,29 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Dropdown from './Dropdown';
 
-const Nav = ({ brands }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Nav = ({ brands, sneakers }) => {
+  const [isBrandMenuOpen, setIsBrandMenuOpen] = useState(false);
+  const [isSneakersMenuOpen, setisSneakersMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleBrandMenu = () => {
+    setIsBrandMenuOpen(!isBrandMenuOpen);
+  }
+
+  const toggleSneakersMenu = () => {
+    setisSneakersMenuOpen(!isSneakersMenuOpen);
   }
 
   return (
     <header className='py-8 absolute z-10 w-full padding-x'>
       <nav className='flex justify-between items-center max-conatiner'>
-        <a href="/">
+        <Link to="/">
           <img 
             src={headerLogo}
             alt="Logo"
             width={130}
             height={29}
           />
-        </a>
+        </Link>
         <ul className='flex flex-1 justify-center items-center gap-16 max-lg:hidden'>
           <li>
             <Link 
@@ -31,16 +36,16 @@ const Nav = ({ brands }) => {
               Home
             </Link>
           </li>
-          <li onMouseEnter={toggleMenu} onMouseLeave={toggleMenu}>
+          <li className="relative" onMouseEnter={toggleBrandMenu} onMouseLeave={toggleBrandMenu}>
             <Link 
               className='fonts-montserrat leading-normal text-lg text-slate-gray relative'
               to="brands"
             >
               Brands
             </Link>
-            {isMenuOpen && (
-              <div className='bg-coral-red absolute w-screen block'>
-                <ul>
+            {isBrandMenuOpen && (
+              <div className='nav-hover'>
+                <ul className='my-6 flex items-center'>
                   {
                     brands.map((brand, index) => (
                       <Dropdown 
@@ -53,13 +58,28 @@ const Nav = ({ brands }) => {
               </div>
             )}
           </li>
-          <li>
+          
+          <li className="relative" onMouseEnter={toggleSneakersMenu} onMouseLeave={toggleSneakersMenu} >
             <Link 
               className='fonts-montserrat leading-normal text-lg text-slate-gray'
               to="sneakers"
               >
               Sneakers
             </Link>
+            {isSneakersMenuOpen && (
+              <div className='nav-hover'>
+                <ul className='my-6 flex items-center'>
+                  {
+                    sneakers.map((sneaker, index) => (
+                      <Dropdown 
+                        key={index}
+                        {...sneaker}
+                      />
+                    ))
+                  }
+                </ul>
+              </div>
+            )}
           </li>
             <li>
             <a className='fonts-montserrat leading-normal text-lg text-slate-gray'>
