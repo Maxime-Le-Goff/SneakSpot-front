@@ -1,6 +1,6 @@
 import Button from "../components/Button"
 import { arrowRight } from '../assets/icons'
-import ShoeCard from "../components/ShoeCard";
+import { ShoeCard } from "../components";
 import { useState } from "react";
 
 const Hero = ({ shoes, bigImg }) => {

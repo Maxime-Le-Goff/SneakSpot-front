@@ -1,4 +1,4 @@
-import PopularProductCard from "../components/PopularProductCard"
+import { SneakerCard } from "../components"
 
 const PopularProducts = ({ popularProducts }) => {
   return (
@@ -11,10 +11,10 @@ const PopularProducts = ({ popularProducts }) => {
       </h2>
       <p className="lg:max-w-lg mt-2 font-montserrat text-slate-gray">Experience top quality products</p>
     </div>
-    <div className="mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-14">
+    <div className="mt-16 place-content-center grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-14">
       {
         popularProducts.map((product, index) => (
-            <PopularProductCard 
+            <SneakerCard 
               key={index}
               {...product}
             />

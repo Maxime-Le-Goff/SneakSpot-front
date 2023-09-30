@@ -67,8 +67,6 @@
 
 .card-03 {
 	position: relative;
-	min-width: 320px;
-  max-width: 320px;
 	height: 450px;
 	background: #ebf4f4;
 	border-radius: 15px;
@@ -80,11 +78,11 @@
 	height: 28%;
 }
 .card-03 .contentBox-01::after {
-	content: '';
+	content: var(--brand);
 	position: absolute;
-	left: 16%;
-  top: -11%;
-  font-size: 9.5em;
+	left: 11%;
+  	top: -11%;
+  	font-size: 9.5em;
 	font-weight: 800;
 	color: #c1d4ec34;
 	-webkit-text-fill-color: rgba(49, 100, 105, 0.231);
@@ -95,8 +93,6 @@
 	position: absolute;
 	top: 8%;
 	right: 6%;
-	color: #e2e2e2;
-	font-size: 20px;
 	z-index: 5;
 	cursor: pointer;
 }
@@ -117,25 +113,7 @@
 .contentBox-02 {
 	height: 120px;
 }
-.sub-image {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.sub-image img {
-	height: 30px;
-	margin: 70px 7px 0px;
-	padding: 5px;
-	background: #fff;
-	border-radius: 10px;
-	box-shadow: -10px -10px 10px rgba(230, 244,244,0.5),
-				5px 5px 5px rgba(70,70,70, 0.12);
-	cursor: pointer;
-	border: 1.5px solid #fff;
-}
-.card-03 .contentBox-02 .sub-image img:hover {
-	border: 1.5px solid #0b67df;
-} 
+
 .card-03 .contentBox-03 {
 	position: relative;
 	padding: 5px 20px 10px;

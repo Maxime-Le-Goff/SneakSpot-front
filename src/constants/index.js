@@ -74,7 +74,15 @@ export const socialMedia = [
 
 export const filters = [
     {
-        name: 'brand',
+        title: 'brands',
         
-    }
+    },
+    {
+        title: 'Types',
+        
+    },
+    {
+        title: 'Price',
+        
+    },
 ]
