@@ -78,11 +78,34 @@ export const filters = [
         
     },
     {
-        title: 'Types',
+        title: 'types',
         
     },
     {
-        title: 'Price',
+        title: 'price',
+        
+    },
+];
+
+export const prices = [
+    {
+        name: '0-25$',
+        id:0
+        
+    },
+    {
+        name: '26-50$',
+        id:1
+        
+    },
+    {
+        name: '50-100$',
+        id:2
+        
+    },
+    {
+        name: '100$ & more',
+        id:3
         
     },
 ]

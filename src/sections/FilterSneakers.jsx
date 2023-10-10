@@ -1,11 +1,24 @@
 import { useState, useMemo } from 'react';
 import FilterItem from '../components/FilterItem';
-import { filters } from '../constants';
+import { filters, prices } from '../constants';
 
-const FilterSneakers = () => {
+const FilterSneakers = ({ brands, types }) => {
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(null);
+  const[data, setData] = useState();
 
-  const toggleMenu = (index) => {
+  const toggleMenu = (e,index) => {
+    const value = (e.target.textContent).split(' ')[0];
+    
+    if(value === "brands") {
+      setData(brands);
+    } 
+    else if(value === 'types') {
+      setData(types)
+    } 
+    else {
+      setData(prices)
+    }
+
     setSelectedMenuIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
@@ -15,10 +28,11 @@ const FilterSneakers = () => {
         key={index}
         title={filter.title}
         isOpen={index === selectedMenuIndex}
-        onClick={() => toggleMenu(index)}
+        onClick={(e) => toggleMenu(e,index)}
+        data={data}
       />
     )),
-    [selectedMenuIndex]
+    [selectedMenuIndex, data, toggleMenu]
   );
 
   return (
@@ -26,7 +40,9 @@ const FilterSneakers = () => {
         <div className="mt-10">
         <h2 className="text-center text-4xl font-palanquin font-bold text-coral-red uppercase mb-10">Sneakers</h2>
     </div>
-        <div className="mt-20 flex flex-1 gap-10 justify-center">{menuItems}</div>
+        <div className="mt-20 flex flex-1 gap-10 justify-center relative">
+          {menuItems}
+        </div>
     </section>
   );
 };

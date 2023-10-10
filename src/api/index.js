@@ -26,14 +26,36 @@ export const heroDataLoader = () => {
         return res;
   }
 
-  export const allSneakersLoader = () => {
-        const res = axios.get(`http://localhost:8080/api/products`)
-       .then(res => {
-                const allSneakers = JSON.parse(res.data);
-                return {allSneakers};
-        })
-        .catch(err => {
-        console.log(err);
-        })
-        return res;
-  }
+  export const SneakerPageLoader = () => {
+        // Create an array of Promises for each Axios request
+        const sneakerPromise = axios.get(`http://localhost:8080/api/product`)
+          .then(res => JSON.parse(res.data))
+          .catch(err => {
+            console.error('Error fetching sneakers:', err);
+            return []; // Return an empty array or handle the error as needed
+          });
+      
+        const brandPromise = axios.get(`http://localhost:8080/api/brand`)
+          .then(res => JSON.parse(res.data))
+          .catch(err => {
+            console.error('Error fetching brands:', err);
+            return []; // Return an empty array or handle the error as needed
+          });
+      
+        const categoryPromise = axios.get(`http://localhost:8080/api/category`)
+          .then(res => JSON.parse(res.data))
+          .catch(err => {
+            console.error('Error fetching categories:', err);
+            return []; // Return an empty array or handle the error as needed
+          });
+      
+        // Use Promise.all to wait for all promises to resolve
+        return Promise.all([sneakerPromise, brandPromise, categoryPromise])
+          .then(([allSneakers, brands, categories]) => {
+            return { allSneakers, brands, categories };
+          })
+          .catch(err => {
+            console.error('Error loading data:', err);
+            throw err; // You can choose to rethrow the error or handle it differently
+          });
+      };

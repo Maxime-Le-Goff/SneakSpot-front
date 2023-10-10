@@ -1,8 +1,6 @@
 import { Outlet, useLoaderData } from "react-router-dom"
 import { Footer, Nav } from "../components"
 
-
-
 const Root = () => {
     const data = useLoaderData();
     const brands = data.brands;
