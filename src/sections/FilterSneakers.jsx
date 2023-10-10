@@ -2,12 +2,15 @@ import { useState, useMemo } from 'react';
 import FilterItem from '../components/FilterItem';
 import { filters, prices } from '../constants';
 
-const FilterSneakers = ({ brands, types }) => {
+const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFilters, selectedBrandFilters }) => {
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(null);
   const[data, setData] = useState();
+  const allFilters = selectedBrandFilters.concat(selectedCategoryFilters);
 
   const toggleMenu = (e,index) => {
     const value = (e.target.textContent).split(' ')[0];
+    console.log(allFilters);
+
     
     if(value === "brands") {
       setData(brands);
@@ -30,9 +33,12 @@ const FilterSneakers = ({ brands, types }) => {
         isOpen={index === selectedMenuIndex}
         onClick={(e) => toggleMenu(e,index)}
         data={data}
+        handleFilterChange={handleFilterChange}
+        selectedBrandFilters={selectedBrandFilters}
+        selectedCategoryFilters={selectedCategoryFilters}
       />
     )),
-    [selectedMenuIndex, data, toggleMenu]
+    [selectedMenuIndex, data, toggleMenu, handleFilterChange, selectedBrandFilters, selectedCategoryFilters]
   );
 
   return (
@@ -43,6 +49,16 @@ const FilterSneakers = ({ brands, types }) => {
         <div className="mt-20 flex flex-1 gap-10 justify-center relative">
           {menuItems}
         </div>
+        <div className='flex gap-10 padding-x'>
+        {
+          allFilters.map((filter, index) => (
+            <div key={index} className='mt-5 rounded-xl px-10 py-3 bg-pale-blue text-slate-gray max-w-max justify-center items-center flex font-montserrat'>
+              <p>{filter}</p>
+            </div>
+          ))
+        }
+        </div>
+        
     </section>
   );
 };
