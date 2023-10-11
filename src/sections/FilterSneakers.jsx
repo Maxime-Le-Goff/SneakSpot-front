@@ -2,10 +2,10 @@ import { useState, useMemo } from 'react';
 import FilterItem from '../components/FilterItem';
 import { filters, prices } from '../constants';
 
-const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFilters, selectedBrandFilters }) => {
+const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFilters, selectedBrandFilters, selectedPriceFilters }) => {
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(null);
   const[data, setData] = useState();
-  const allFilters = selectedBrandFilters.concat(selectedCategoryFilters);
+  const allFilters = selectedBrandFilters.concat(selectedCategoryFilters).concat(selectedPriceFilters);
 
   const toggleMenu = (e,index) => {
     const value = (e.target.textContent).split(' ')[0];
@@ -34,19 +34,21 @@ const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFil
         onClick={(e) => toggleMenu(e,index)}
         data={data}
         handleFilterChange={handleFilterChange}
-        selectedBrandFilters={selectedBrandFilters}
-        selectedCategoryFilters={selectedCategoryFilters}
       />
     )),
-    [selectedMenuIndex, data, toggleMenu, handleFilterChange, selectedBrandFilters, selectedCategoryFilters]
+    [selectedMenuIndex, data, toggleMenu, handleFilterChange]
   );
 
   return (
     <section className="max-container max-sm:mt-12 pt-28">
         <div className="mt-10">
-        <h2 className="text-center text-4xl font-palanquin font-bold text-coral-red uppercase mb-10">Sneakers</h2>
-    </div>
-        <div className="mt-20 flex flex-1 gap-10 justify-center relative">
+          <h1 className="mt-10 font-palanquin text-4xl max-sm:text-[72px] max-sm:leading-[82px] font-bold ">
+          <span className="xl:bg-white xl:whitespace-nowrelative z-10">Explore the Best Selection of</span>
+          <span className="text-coral-red inline-blmt-3"> Sneakers</span>
+          </h1>
+          <p className="font-monsterrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">Step into Style with the Latest Footwear</p>
+        </div>
+        <div className="mt-10 flex flex-1 gap-10 justify-center relative">
           {menuItems}
         </div>
         <div className='flex gap-10 padding-x'>

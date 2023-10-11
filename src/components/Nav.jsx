@@ -5,20 +5,9 @@ import { useState } from 'react';
 import Dropdown from './Dropdown';
 
 const Nav = ({ brands, sneakers }) => {
-  const [isBrandMenuOpen, setIsBrandMenuOpen] = useState(false);
-  const [isSneakersMenuOpen, setisSneakersMenuOpen] = useState(false);
-
-  const toggleBrandMenu = () => {
-    setIsBrandMenuOpen(!isBrandMenuOpen);
-  }
-
-  const toggleSneakersMenu = () => {
-    setisSneakersMenuOpen(!isSneakersMenuOpen);
-  }
-
   return (
     <header className='py-8 absolute z-10 w-full padding-x'>
-      <nav className='flex justify-between items-center max-conatiner'>
+      <nav className='flex justify-between items-center max-container'>
         <Link to="/">
           <img 
             src={headerLogo}
@@ -30,61 +19,36 @@ const Nav = ({ brands, sneakers }) => {
         <ul className='flex flex-1 justify-center items-center gap-16 max-lg:hidden'>
           <li>
             <Link 
-              className='fonts-montserrat leading-normal text-lg text-slate-gray'
+              className='fonts-montserrat leading-normal text-lg text-slate-gray hover:text-coral-red'
               to="/"
               >
               Home
             </Link>
           </li>
-          <li className="relative" onMouseEnter={toggleBrandMenu} onMouseLeave={toggleBrandMenu}>
+          <li className="relative">
             <Link 
-              className='fonts-montserrat leading-normal text-lg text-slate-gray relative'
+              className='fonts-montserrat leading-normal text-lg text-slate-gray relative hover:text-coral-red'
               to="brands"
             >
               Brands
             </Link>
-            {isBrandMenuOpen && (
-              <div className='nav-hover'>
-                <ul className='my-6 flex items-center'>
-                  {
-                    brands.map((brand, index) => (
-                      <Dropdown 
-                        key={index}
-                        {...brand}
-                      />
-                    ))
-                  }
-                </ul>
-              </div>
-            )}
           </li>
           
-          <li className="relative" onMouseEnter={toggleSneakersMenu} onMouseLeave={toggleSneakersMenu} >
+          <li className="relative">
             <Link 
-              className='fonts-montserrat leading-normal text-lg text-slate-gray'
+              className='fonts-montserrat leading-normal text-lg text-slate-gray hover:text-coral-red'
               to="sneakers"
               >
               Sneakers
             </Link>
-            {isSneakersMenuOpen && (
-              <div className='nav-hover'>
-                <ul className='my-6 flex items-center'>
-                  {
-                    sneakers.map((sneaker, index) => (
-                      <Dropdown 
-                        key={index}
-                        {...sneaker}
-                      />
-                    ))
-                  }
-                </ul>
-              </div>
-            )}
           </li>
             <li>
-            <a className='fonts-montserrat leading-normal text-lg text-slate-gray'>
+            <Link 
+              className='fonts-montserrat leading-normal text-lg text-slate-gray hover:text-coral-red'
+              to="#"
+            >
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
         <div>

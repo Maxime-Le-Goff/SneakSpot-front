@@ -82,30 +82,30 @@ export const filters = [
         
     },
     {
-        title: 'price',
+        title: 'prices',
         
     },
 ];
 
 export const prices = [
-    {
-        name: '0-25$',
-        id:0
-        
+    {   
+        id:0,
+        firstDigit: 0,
+        secondDigit: 25,
     },
-    {
-        name: '26-50$',
-        id:1
-        
+    {   
+        id:1,
+        firstDigit: 26,
+        secondDigit: 50,
     },
-    {
-        name: '50-100$',
-        id:2
-        
+    {   
+        id:2,
+        firstDigit: 51,
+        secondDigit: 100,
     },
-    {
-        name: '100$ & more',
-        id:3
-        
+    {   
+        id:3,
+        firstDigit: 101,
+        secondDigit: 100000,
     },
 ]

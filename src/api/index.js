@@ -59,3 +59,16 @@ export const heroDataLoader = () => {
             throw err; // You can choose to rethrow the error or handle it differently
           });
       };
+      
+      export const BrandsPageLoader = () => {
+        const res = axios.get(`http://localhost:8080/api/brand`)
+        .then(res => {
+          const brands = JSON.parse(res.data);
+          return brands;
+        })
+        .catch(err => {
+          console.log(err);
+          throw err;
+        })
+        return res;
+      }
