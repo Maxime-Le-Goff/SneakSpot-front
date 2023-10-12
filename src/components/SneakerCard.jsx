@@ -1,5 +1,6 @@
 import { useState } from "react"
 import StarRating from "./StarRating";
+import { Heart } from "lucide-react";
 
 const SneakerCard = ({ model, price, img, brand, description,color, rating }) => {
 	const brandStyle = {
@@ -11,10 +12,10 @@ const SneakerCard = ({ model, price, img, brand, description,color, rating }) =>
     <div className="card-03">
 			<div className="contentBox-01" style={brandStyle} >
 				<span 
-					className={`like text-2xl ${isHeartOn ? 'text-red-500' : 'text-zinc-500' }`} 
+					className={`${isHeartOn ? 'text-red-500' : 'text-zinc-500' }`} 
 					onClick={() => {setIsHeartOn(!isHeartOn)}}
 				>
-				&#10084;
+				<Heart />
 				</span>
 				<div className="main-image">
 					<img src={img} alt={model} draggable={false} />
