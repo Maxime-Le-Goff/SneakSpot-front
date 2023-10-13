@@ -1,6 +1,7 @@
 import { Outlet, useLoaderData } from "react-router-dom"
 import { Footer, Nav } from "../components"
 import { useState } from "react";
+import Dialog from '../components/Dialog';
 
 const Root = () => {
     const data = useLoaderData();
@@ -16,7 +17,7 @@ const Root = () => {
     return (
         <>
             <Nav brands={brands} sneakers={sneakers} dialog={handleDialog} />
-            {/* <Dialog open={openDialog} /> */}
+            <Dialog open={openDialog} handleDialog={handleDialog} />
             <Outlet />
             <section className="bg-black padding-x padding-t pb-8">
             <Footer />
