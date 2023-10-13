@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { User2 } from 'lucide-react';
 
-const Nav = ({ brands, sneakers, dialog }) => {
+const Nav = ({ brands, sneakers, dialog, user }) => {
 
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
-  const [isUser, setIsUser] = useState(false);
   
   return (
     <header className='py-8 absolute z-10 w-full padding-x'>
@@ -57,18 +56,12 @@ const Nav = ({ brands, sneakers, dialog }) => {
             <Link 
               className='fonts-montserrat leading-normal text-lg  hover:text-coral-red'
               to="#"
-              onClick={() => setIsHamburgerClicked(false)}
+              onClick={() => {
+                setIsHamburgerClicked(false);
+                dialog();
+              }}
             >
-              Sign in
-            </Link>
-          </li>
-          <li>
-            <Link 
-              className='fonts-montserrat leading-normal text-lg  hover:text-coral-red'
-              to="#"
-              onClick={() => setIsHamburgerClicked(false)}
-            >
-              Sign up
+              Sign In / Sign Up
             </Link>
           </li>
         </ul>
@@ -111,26 +104,18 @@ const Nav = ({ brands, sneakers, dialog }) => {
             </Link>
           </li>
         </div>
-        { !isUser && (<div className='flex gap-5'>
-         <li>
+        { !user && (<div className='flex gap-5'>
+          <li>
             <Link 
               className='fonts-montserrat leading-normal text-lg text-slate-gray hover:text-coral-red'
               to="#"
               onClick={() => dialog()}
             >
-              Sign in
-            </Link>
-          </li>
-          <li>
-            <Link 
-              className='fonts-montserrat leading-normal text-lg text-slate-gray hover:text-coral-red'
-              to="#"
-            >
-              Sign up
+              Sign In / Sign Up
             </Link>
           </li>
         </div>)}
-        { isUser && (
+        { user && (
          <li>
          <User2 className='text-slate-gray hover:text-coral-red cursor-pointer' />
          </li>

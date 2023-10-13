@@ -6,9 +6,14 @@ import Dialog from '../components/Dialog';
 const Root = () => {
     const data = useLoaderData();
     const [openDialog, setOpenDialog] = useState(false);
+    const [isUser, setIsUser] = useState(false);
 
     const handleDialog = () => {
         setOpenDialog(!openDialog);
+    }
+
+    const handleUser = (choice) => {
+        setIsUser(choice);
     }
 
     const brands = data.brands;
@@ -16,8 +21,8 @@ const Root = () => {
     
     return (
         <>
-            <Nav brands={brands} sneakers={sneakers} dialog={handleDialog} />
-            <Dialog open={openDialog} handleDialog={handleDialog} />
+            <Nav brands={brands} sneakers={sneakers} dialog={handleDialog} user={isUser} />
+            <Dialog open={openDialog} handleDialog={handleDialog} handleUser={handleUser} />
             <Outlet />
             <section className="bg-black padding-x padding-t pb-8">
             <Footer />

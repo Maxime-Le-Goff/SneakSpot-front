@@ -1,12 +1,12 @@
 import { X } from "lucide-react"
-import SignUp from "./SignUp"
+import Auth from "./Auth"
 
-const Dialog = ({ open, handleDialog }) => {
+const Dialog = ({ open, handleDialog, handleUser }) => {
   
   return (
-    <dialog open={open} className="w-full h-screen md:h-fit md:w-[45%] z-40 fixed md:top-[10%] md:left-[30%] left-0 top-0">
+    <dialog open={open} className="w-full h-screen md:h-fit md:w-[45%] z-40 fixed md:top-[4%] md:left-[30%] left-0 top-0">
     <div className={`${open ? "fixed top-0 left-0 -z-50 w-full h-screen bg-black bg-opacity-25": ""}`}/>
-    <SignUp handleDialog={handleDialog}/>
+    <Auth handleDialog={handleDialog} handleUser={handleUser}/>
       {/* 
         <div className=" w-full h-[25%] flex items-center justify-between bg-pale-blue px-8">
           <h2 className="font-montserrat font-semibold text-xl">Log In</h2>
