@@ -6,7 +6,7 @@ const SignUp = ({ handleDialog }) => {
   const [action, setAction] = useState('Log In');
 
   return (
-    <div className="flex flex-col bg-white pb-7">
+    <div className="flex flex-col bg-white pb-7 h-screen md:h-fit ">
         <div className=" flex flex-col items-center gap-5 w-full mt-7 ">
             <p className="text-coral-red text-4xl font-semibold">{action}</p>
             <X 
@@ -17,30 +17,30 @@ const SignUp = ({ handleDialog }) => {
             <div className="w-16 h-1 bg-coral-red rounded-lg"></div>
         </div>
         <div className="mt-16 flex flex-col gap-6 items-center">
-            <div className="flex items-center w-[80%] h-20 bg-pale-blue rounded-md">
+            <div className="flex items-center sm:w-[80%] w-[95%] h-20 bg-pale-blue rounded-md">
                 <Mails className="mx-7" />
-                <input className="h-12 w-[100%] bg-transparent border-none outline-none text-gray-300 text-lg" placeholder="Email"  type='email' />
+                <input className="h-12 w-[100%] bg-transparent border-none outline-none text-coral-red text-lg" placeholder="Email"  type='email' />
             </div>
-            {action === 'Sign Up' && (<div className="flex items-center w-[80%] h-20 bg-pale-blue rounded-md">
+            {action === 'Sign Up' && (<div className="flex items-center sm:w-[80%] w-[95%] h-20 bg-pale-blue rounded-md">
               <User2 className="mx-7" />
-              <input className="h-12 w-[100%] bg-transparent border-none outline-none text-gray-300 text-lg" placeholder="Name" type="text" />
+              <input className="h-12 w-[100%] bg-transparent border-none outline-none text-coral-red text-lg" placeholder="Name" type="text" />
             </div>)}
-            <div className="flex items-center w-[80%] h-20 bg-pale-blue rounded-md">
+            <div className="flex items-center sm:w-[80%] w-[95%] h-20 bg-pale-blue rounded-md">
               <LockKeyhole className="mx-7" />
-              <input className="h-12 w-[100%] bg-transparent border-none outline-none text-gray-300 text-lg" placeholder="Password" type="password" />
+              <input className="h-12 w-[100%] bg-transparent border-none outline-none text-coral-red text-lg" placeholder="Password" type="password" />
             </div>
         </div>
         <p className="pl-16 mt-6 text-disabled text-sm">Lost Password ? <span className="text-coral-red cursor-pointer">Click Here</span></p>
         <div className="flex gap-7 my-14 justify-center">
           <p 
-            className={`flex justify-center items-center w-[25%] h-14 text-white ${action === 'Sign Up' ?'bg-coral-red' : 'bg-disabled'} rounded-full text-lg 
+            className={`flex justify-center items-center flex-wrap w-[150px] h-14 text-white ${action === 'Sign Up' ?'bg-coral-red' : 'bg-disabled'} rounded-full text-lg 
             font-semibold cursor-pointer`}
             onClick={() => setAction('Sign Up')}
           >
             Sign Up
           </p>
           <p 
-            className={`flex justify-center items-center w-[25%] h-14 text-white ${action === 'Log In' ?'bg-coral-red' : 'bg-disabled'} rounded-full text-lg font-semibold cursor-pointer`}
+            className={`flex justify-center items-center flex-wrap w-[150px] h-14 text-white ${action === 'Log In' ?'bg-coral-red' : 'bg-disabled'} rounded-full text-lg font-semibold cursor-pointer`}
             onClick={() => setAction('Log In')}
           >
             Log In

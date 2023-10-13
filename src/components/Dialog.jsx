@@ -4,7 +4,7 @@ import SignUp from "./SignUp"
 const Dialog = ({ open, handleDialog }) => {
   
   return (
-    <dialog open={open} className="w-[35%] h-52 z-40 fixed top-[10%] left-[35%]">
+    <dialog open={open} className="w-full h-screen md:h-fit md:w-[45%] z-40 fixed md:top-[10%] md:left-[30%] left-0 top-0">
     <div className={`${open ? "fixed top-0 left-0 -z-50 w-full h-screen bg-black bg-opacity-25": ""}`}/>
     <SignUp handleDialog={handleDialog}/>
       {/* 
