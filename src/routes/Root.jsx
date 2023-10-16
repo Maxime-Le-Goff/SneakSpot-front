@@ -1,12 +1,12 @@
-import { Outlet, useLoaderData } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import { Footer, Nav } from "../components"
 import { useState } from "react";
 import Dialog from '../components/Dialog';
 
 const Root = () => {
-    const data = useLoaderData();
     const [openDialog, setOpenDialog] = useState(false);
     const [isUser, setIsUser] = useState(false);
+    const [user, setUser] = useState({})
 
     const handleDialog = () => {
         setOpenDialog(!openDialog);
@@ -15,13 +15,10 @@ const Root = () => {
     const handleUser = (choice) => {
         setIsUser(choice);
     }
-
-    const brands = data.brands;
-    const sneakers = data.sneakers;
     
     return (
         <>
-            <Nav brands={brands} sneakers={sneakers} dialog={handleDialog} user={isUser} />
+            <Nav dialog={handleDialog} isUser={isUser} user={user} />
             <Dialog open={openDialog} handleDialog={handleDialog} handleUser={handleUser} />
             <Outlet />
             <section className="bg-black padding-x padding-t pb-8">

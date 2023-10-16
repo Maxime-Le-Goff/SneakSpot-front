@@ -72,3 +72,21 @@ export const heroDataLoader = () => {
         })
         return res;
       }
+
+      export const fetchUserProfile = async (token) => {
+        try {
+          const response = await axios.get('http://localhost:8080/api/user-profile', {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+      
+          // The user data is in response.data.user
+          return response.data.user;
+        } catch (error) {
+          // Handle errors, e.g., token expiration
+          console.error('Error fetching user profile:', error);
+          return null; // Return null or handle the error as needed
+        }
+      };
+      

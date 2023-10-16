@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { User2 } from 'lucide-react';
 
-const Nav = ({ brands, sneakers, dialog, user }) => {
+const Nav = ({ dialog, isUser, user }) => {
 
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
   
@@ -104,7 +104,7 @@ const Nav = ({ brands, sneakers, dialog, user }) => {
             </Link>
           </li>
         </div>
-        { !user && (<div className='flex gap-5'>
+        { !isUser && (<div className='flex gap-5'>
           <li>
             <Link 
               className='fonts-montserrat leading-normal text-lg text-slate-gray hover:text-coral-red'
@@ -115,7 +115,7 @@ const Nav = ({ brands, sneakers, dialog, user }) => {
             </Link>
           </li>
         </div>)}
-        { user && (
+        { isUser && (
          <li>
          <User2 className='text-slate-gray hover:text-coral-red cursor-pointer' />
          </li>
