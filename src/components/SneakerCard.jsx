@@ -1,12 +1,36 @@
 import { useState } from "react"
 import StarRating from "./StarRating";
 import { Heart } from "lucide-react";
+import axios from "axios";
 
-const SneakerCard = ({ model, price, img, brand, description,color, rating }) => {
+const SneakerCard = ({ id, model, price, img, brand, description,color, rating }) => {
 	const brandStyle = {
-		'--brand': `"${brand.name}"`, // Set the --brand CSS variable
+		'--brand': `"${brand.name}"`,
 	};
 	const [isHeartOn, setIsHeartOn] = useState(false);
+
+	const handleAddToCart = async () => {
+
+		const token = localStorage.getItem("token");
+		const data = {
+			id: id,
+		};
+		try {
+			const response = await axios.post('http://localhost:8080/api/product_to_cart',data, {
+				headers: {
+					'Authorization': `Bearer ${token}`
+				},
+			})
+			if (response.data.success) {
+				console.log(response);
+	
+		} else {
+			console.log('Error:', response);
+		}
+		} catch (error) {
+			console.log(error);
+		}
+		}
 
   return (
     <div className="card-03">
@@ -39,7 +63,12 @@ const SneakerCard = ({ model, price, img, brand, description,color, rating }) =>
 					<span>$</span>
 					<span>{price}</span>
 					<div className="space"></div>
-					<a className="bg-coral-red hover:bg-red-500" href="#">ADD to CARD</a>
+					<a 
+						className="bg-coral-red hover:bg-red-500" href="#"
+						onClick={() => handleAddToCart() }	
+					>
+						ADD to CARD
+					</a>
 				</div>
 			</div>
 		</div>

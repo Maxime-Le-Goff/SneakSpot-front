@@ -82,7 +82,24 @@ export const heroDataLoader = () => {
           });
       
           // The user data is in response.data.user
-          return response.data.user;
+          return JSON.parse(response.data);
+        } catch (error) {
+          // Handle errors, e.g., token expiration
+          console.error('Error fetching user profile:', error);
+          return null; // Return null or handle the error as needed
+        }
+      };
+
+      export const fetchUserCart = async () => {
+        const token = localStorage.getItem('token');
+        try {
+          const response = await axios.get('http://localhost:8080/api/user_cart', {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+      
+          return JSON.parse(response.data);
         } catch (error) {
           // Handle errors, e.g., token expiration
           console.error('Error fetching user profile:', error);

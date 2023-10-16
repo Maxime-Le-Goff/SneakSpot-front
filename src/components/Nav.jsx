@@ -2,7 +2,7 @@ import { headerLogo } from '../assets/images';
 import { hamburger } from '../assets/icons';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { User2 } from 'lucide-react';
+import { ShoppingCart, User2 } from 'lucide-react';
 
 const Nav = ({ dialog, isUser, user }) => {
 
@@ -116,8 +116,13 @@ const Nav = ({ dialog, isUser, user }) => {
           </li>
         </div>)}
         { isUser && (
-         <li>
-         <User2 className='text-slate-gray hover:text-coral-red cursor-pointer' />
+         <li className='flex gap-5'>
+          <User2 className='text-slate-gray hover:text-coral-red cursor-pointer' />
+          <Link to="cart">
+            <ShoppingCart 
+              className='text-slate-gray cursor-pointer hover:text-coral-red' 
+            />
+          </Link>
          </li>
    )}
        

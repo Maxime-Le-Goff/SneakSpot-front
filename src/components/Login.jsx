@@ -1,4 +1,4 @@
-import { Check, LockKeyhole, Mails, X } from "lucide-react"
+import { Check, LockKeyhole, Mails } from "lucide-react"
 import { useState } from "react"
 import axios from "axios";
 import { fetchUserProfile } from "../api";
@@ -7,8 +7,7 @@ const Login = ({ handleDialog, handleUser, setInvalidCredentials }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [inputEmpty, setInputEmpty] =  useState(false);
-
+  
   const handleLogin = async () => {
 
     const data = {
@@ -24,11 +23,8 @@ const Login = ({ handleDialog, handleUser, setInvalidCredentials }) => {
         setEmail('');
         setPassword('');
         handleDialog();
-        handleUser(true);
-
         const userData = await fetchUserProfile(token);
-        console.log(userData);
-
+        handleUser(true, userData);
 
       } else {
         console.log('Error:', response);
