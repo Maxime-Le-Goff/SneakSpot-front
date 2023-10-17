@@ -1,9 +1,20 @@
 import { LogOut, Truck } from "lucide-react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
-const Dropdown = () => {
+const Dropdown = ({ handleUser }) => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    if(localStorage.getItem('token')) {
+      localStorage.removeItem('token');
+      handleUser(false);
+      navigate('/');
+    }   
+  }
+
   return (
-    <div className="absolute top-10 left-0 w-[200px] -translate-x-[45%] bg-white border border-slate-200 rounded-md overflow-hidden">
+    <div className="absolute top-10 left-0 w-[150px] sm:w-[200px] -translate-x-[45%] bg-white border border-slate-200 rounded-md overflow-hidden">
         <ul className="">
         <div className="flex gap-3 p-4 hover:bg-slate-50 cursor-pointer">
           <Truck />
@@ -11,7 +22,10 @@ const Dropdown = () => {
             My Orders
           </li>
         </div>
-        <div className="flex gap-3 p-4 hover:bg-slate-50 cursor-pointer">
+        <div 
+          className="flex gap-3 p-4 hover:bg-slate-50 cursor-pointer"
+          onClick={() => handleLogout()}
+        >
           <LogOut />
           <li>
             Log Out

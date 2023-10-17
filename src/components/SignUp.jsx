@@ -2,7 +2,7 @@ import axios from "axios";
 import { Check, LockKeyhole, Mails, MapPin, User2 } from "lucide-react"
 import { useState } from "react";
 
-const SignUp = ({ handleDialog, setExistingUser, handleUser }) => {
+const SignUp = ({ handleDialog, setExistingUser }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,11 +26,10 @@ const SignUp = ({ handleDialog, setExistingUser, handleUser }) => {
         setEmail('');
         setPassword('');
         setName('');
-        handleUser(true);
         setTimeout(() => {
           setUserCreated(false);
           handleDialog();
-        }, 3000)
+        }, 2000)
 
       } else {
         console.log('Error:', response);
@@ -41,14 +40,14 @@ const SignUp = ({ handleDialog, setExistingUser, handleUser }) => {
         setExistingUser(true);
         setTimeout(() => {
           setExistingUser(false);
-        }, 4000)
+        }, 2000)
         
       }
     }
   };
 
   return (
-    <div className="mt-16 flex flex-col gap-6 items-center">
+    <div className="mt-5 flex flex-col gap-6 items-center">
         <div className="flex items-center sm:w-[80%] w-[95%] h-20 bg-pale-blue rounded-md">
             <User2 className="mx-7" />
             <input className="h-12 w-[100%] bg-transparent border-none outline-none text-coral-red text-lg" placeholder="Name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -69,7 +68,7 @@ const SignUp = ({ handleDialog, setExistingUser, handleUser }) => {
           <p className="text-white bg-emerald-400 rounded-lg p-5">User registered successfully
           </p>
         )}
-        <div className="w-fit mt-2 cursor-pointer text-emerald-600 hover:bg-emerald-300 hover:text-white rounded-lg p-1">
+        <div className="w-fit cursor-pointer text-emerald-600 hover:bg-emerald-300 hover:text-white rounded-lg">
           <Check size={35} onClick={() => handleSignUp()} />
         </div>
     </div>

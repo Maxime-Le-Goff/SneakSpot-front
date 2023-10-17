@@ -15,7 +15,7 @@ const FilterItem = ({ title, isOpen, onClick, data, handleFilterChange }) => {
     return (
       <>
         <div 
-          className={`w-full h-[70px] border border-slate-300 flex justify-between items-center cursor-pointer rounded-full sm:w-1/3 ${isOpen ? "bg-coral-red font-semibold bg-opacity-70" : ""}`}
+          className={`w-full h-[70px] border border-slate-200 flex justify-between items-center cursor-pointer rounded-md sm:w-1/3 ${isOpen ? "bg-pale-blue font-semibold " : ""}`}
           onClick={onClick}    
         >
           <p className="px-5 capitalize font-palanquin text-lg">{title}</p>
@@ -23,7 +23,7 @@ const FilterItem = ({ title, isOpen, onClick, data, handleFilterChange }) => {
           
         </div>
         {isOpen && title !== 'prices' && (
-          <div className={`border-2 text-disabled border-t-transparent bg-white absolute w-[100%] h-[150px] top-[100%] left-[0%] flex justify-around z-20 flex-wrap`}>
+          <div className={`border tracking-wide font-montserrat text-slate-gray border-t-transparent bg-white absolute w-[100%] h-[150px] top-[100%] left-[0%] flex justify-around z-20 flex-wrap gap-2 rounded-md`}>
               {
                 data.map((d) => (
                   <div key={d.id} className="flex items-center" >
@@ -40,7 +40,7 @@ const FilterItem = ({ title, isOpen, onClick, data, handleFilterChange }) => {
           </div>
         )}
         {isOpen && title === 'prices' && (
-          <div className={`border-2 text-disabled border-t-transparent bg-white absolute w-[100%] h-[150px] top-[100%] left-[0%] flex justify-around z-20 flex-wrap`}>
+          <div className={`border tracking-wide font-montserrat text-disabled border-t-transparent bg-white absolute w-[100%] h-[150px] top-[100%] left-[0%] flex justify-around z-20 flex-wrap gap-2`}>
               {
                 data.map((d) => (
                   <div key={d.id} className="flex items-center" >

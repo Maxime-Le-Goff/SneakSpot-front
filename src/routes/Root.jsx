@@ -12,29 +12,43 @@ const Root = () => {
         setOpenDialog(!openDialog);
     }
 
-    const handleUser = (choice, user) => {
-        setIsUser(choice);
-        setUser({
+    const handleUser = (choice, user = null) => {
+        if(user === null){
+            setIsUser(choice);
+            setUser({
+                id:null,
+                email:'',
+                adress:'',
+                roles:'',
+                name:'',
+            })
+        } else {
+            setIsUser(choice);
+            setUser({
             id: user.id,
             email: user.email,
             name: user.name,
             roles: [user.roles],
             adress: user.adress,
         })
+        }
+        
     }
 
     useEffect(() => {
         if(localStorage.getItem('token')){
             setIsUser(true);
+        } else {
+            setIsUser(false);
         }
     },[])
    
     
     return (
         <>
-            <Nav dialog={handleDialog} isUser={isUser} user={user} />
+            <Nav dialog={handleDialog} isUser={isUser} user={user} handleUser={handleUser} />
             <Dialog open={openDialog} handleDialog={handleDialog} handleUser={handleUser} />
-            <Outlet />
+            <Outlet handleDialog={handleDialog}/>
             <section className="bg-black padding-x padding-t pb-8">
             <Footer />
             </section>

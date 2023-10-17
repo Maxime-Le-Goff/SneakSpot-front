@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { ShoppingCart, User2 } from 'lucide-react';
 import Dropdown from './Dropdown';
 
-const Nav = ({ dialog, isUser, user }) => {
+const Nav = ({ dialog, isUser, user, handleUser }) => {
 
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -57,7 +57,7 @@ const Nav = ({ dialog, isUser, user }) => {
           { !isUser && (<div className='flex gap-5'>
           <li>
             <Link 
-              className='fonts-montserrat leading-normal text-lg text-slate-gray hover:text-coral-red'
+              className='fonts-montserrat leading-normal text-lg hover:text-coral-red'
               to="#"
               onClick={() => dialog()}
             >
@@ -125,7 +125,7 @@ const Nav = ({ dialog, isUser, user }) => {
                 onClick={() => setDropdown(!dropdown)}
               />
               {dropdown && (
-                <Dropdown />
+                <Dropdown handleUser={handleUser} />
               )}
               <Link to="cart">
                 <ShoppingCart 

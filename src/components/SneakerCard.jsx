@@ -4,6 +4,7 @@ import { Heart } from "lucide-react";
 import axios from "axios";
 
 const SneakerCard = ({ id, model, price, img, brand, description,color, rating }) => {
+
 	const brandStyle = {
 		'--brand': `"${brand.name}"`,
 	};
@@ -12,10 +13,11 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 
 	const handleAddToCart = async () => {
 
-		const token = localStorage.getItem("token");
-		const data = {
-			id: id,
-		};
+		if(localStorage.getItem("token")) {
+			const token = localStorage.getItem("token");
+			const data = {
+				id: id,
+			};
 		try {
 			const response = await axios.post('http://localhost:8080/api/product_to_cart',data, {
 				headers: {
@@ -35,7 +37,10 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 		} catch (error) {
 			console.log(error);
 		}
-		}
+	} else {
+		console.log('not connected');
+	}
+	}
 
   return (
 	<>

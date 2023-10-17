@@ -1,7 +1,7 @@
 import { Hero, SuperQuality, CustomerReviews, PopularProducts, Services, Subscribe} from '../sections';
 import { useLoaderData } from 'react-router-dom';
 
-const Home = () => {
+const Home = ({ handleDialog }) => {
   const data = useLoaderData();
   const randomProducts = data.randomProducts;
   const popularProducts = data.popularProducts;
@@ -18,6 +18,7 @@ const Home = () => {
     <section className="padding">
       <PopularProducts 
       popularProducts={popularProducts}
+      handleDialog={handleDialog}
     />
     </section>
     <section className="padding">

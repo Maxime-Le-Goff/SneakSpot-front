@@ -1,6 +1,6 @@
 import { SneakerCard } from "../components"
 
-const PopularProducts = ({ popularProducts }) => {
+const PopularProducts = ({ popularProducts, handleDialog }) => {
   return (
     <section
       id="products"
@@ -17,6 +17,7 @@ const PopularProducts = ({ popularProducts }) => {
             <SneakerCard 
               key={index}
               {...product}
+              handleDialog={handleDialog}
             />
         )
         )
