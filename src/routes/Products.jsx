@@ -41,8 +41,6 @@ const Products = () => {
                 return false;
               }
             })
-            console.log(priceFilterPassed);
-
           return brandFilterPassed && categoryFilterPassed && priceFilterPassed;
         });
         setFilteredData(filteredArray);

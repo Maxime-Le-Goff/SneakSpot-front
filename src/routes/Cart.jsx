@@ -1,22 +1,30 @@
 import { useLoaderData } from "react-router-dom"
 import CartCard from "../components/CartCard"
 import CartRecap from "../components/CartRecap";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
 
     const products = useLoaderData().products;
-    console.log(products);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [nbrArticles, setNbrArticles] = useState(0);
+    useEffect(() => {
+        const newTotalPrice = products.reduce((accumulator, product) => accumulator + product.price, 0);
+        setTotalPrice(newTotalPrice);
+        const newNbrArticles = products.reduce((accumulator, product) => accumulator + 1 , 0);
+        setNbrArticles(newNbrArticles);
+    }, [products]);
+    
 
   return (
     <main className="relative">
         <section className="padding-x">
-            <div className="max-container pt-24">
+            <div className="max-container pt-12 lg:pt-24">
                 <h1 className="mt-10 font-palanquin text-4xl max-sm:text-[45px] max-sm:leading-[70px] font-bold ">Your
                 <span className="text-coral-red inline-mt-3"> Cart</span>
                 </h1>
-                <div className="flex justify-between items-center mt-6 mb-14">
+                <div className="flex justify-between flex-col sm:flex-row sm:items-center mt-6 mb-14">
                     <p className="font-monsterrat text-slate-gray text-lg leading-8">Review and manage your items before proceeding to checkout</p>
-                    <p className="font-semibold font-montserrat">Price: 125$</p>
                 </div>
             </div>
         </section>
@@ -33,7 +41,7 @@ const Cart = () => {
                     ))
                 }
                 </div>
-                    <CartRecap />
+                    <CartRecap totalPrice={totalPrice} nbrArticles={nbrArticles} />
             </section>
         </section>
     </main>

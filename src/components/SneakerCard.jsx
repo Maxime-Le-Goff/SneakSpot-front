@@ -8,6 +8,7 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 		'--brand': `"${brand.name}"`,
 	};
 	const [isHeartOn, setIsHeartOn] = useState(false);
+	const [isAddedToCart, setIsAddedToCart] = useState(false);
 
 	const handleAddToCart = async () => {
 
@@ -23,6 +24,10 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 			})
 			if (response.data.success) {
 				console.log(response);
+				setIsAddedToCart(true);
+				setTimeout(() => {
+					setIsAddedToCart(false)
+				}, 3000)
 	
 		} else {
 			console.log('Error:', response);
@@ -33,8 +38,14 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 		}
 
   return (
+	<>
     <div className="card-03">
 			<div className="contentBox-01" style={brandStyle} >
+			{isAddedToCart && (
+				<div className="bg-emerald-400 p-5 rounded-lg text-white flex justify-center items-center">
+					<p>Item added to cart</p>
+				</div>
+			)}
 				<span 
 					className={`${isHeartOn ? 'text-red-500' : 'text-zinc-500' }`} 
 					onClick={() => {setIsHeartOn(!isHeartOn)}}
@@ -64,7 +75,7 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 					<span>{price}</span>
 					<div className="space"></div>
 					<a 
-						className="bg-coral-red hover:bg-red-500" href="#"
+						className="bg-coral-red hover:bg-red-500"
 						onClick={() => handleAddToCart() }	
 					>
 						ADD to CARD
@@ -72,6 +83,8 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 				</div>
 			</div>
 		</div>
+		
+		</>
   )
 }
 

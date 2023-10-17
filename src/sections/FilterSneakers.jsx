@@ -9,8 +9,6 @@ const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFil
 
   const toggleMenu = (e,index) => {
     const value = (e.target.textContent).split(' ')[0];
-    console.log(allFilters);
-
     
     if(value === "brands") {
       setData(brands);
@@ -40,7 +38,7 @@ const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFil
   );
 
   return (
-    <section className="max-container pt-24">
+    <section className="max-container pt-12 lg:pt-24">
         <div className="max-xl:padding-x">
           <h1 className="mt-10 font-palanquin text-4xl max-sm:text-[45px] max-sm:leading-[70px] font-bold ">
           <span className="">Explore the Best Selection of</span>

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import { Footer, Nav } from "../components"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dialog from '../components/Dialog';
 
 const Root = () => {
@@ -22,6 +22,13 @@ const Root = () => {
             adress: user.adress,
         })
     }
+
+    useEffect(() => {
+        if(localStorage.getItem('token')){
+            setIsUser(true);
+        }
+    },[])
+   
     
     return (
         <>

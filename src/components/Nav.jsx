@@ -3,10 +3,12 @@ import { hamburger } from '../assets/icons';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ShoppingCart, User2 } from 'lucide-react';
+import Dropdown from './Dropdown';
 
 const Nav = ({ dialog, isUser, user }) => {
 
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
   
   return (
     <header className='py-8 absolute z-10 w-full padding-x'>
@@ -17,7 +19,7 @@ const Nav = ({ dialog, isUser, user }) => {
             alt="hamburger"
             width={25}
             height={25}
-            className='hidden max-lg:block absolute right-[10%] z-50 text-white'
+            className='hidden max-lg:block z-50 text-white relative'
             onClick={() => setIsHamburgerClicked(!isHamburgerClicked)}
           />
         </div>
@@ -52,18 +54,17 @@ const Nav = ({ dialog, isUser, user }) => {
               Sneakers
             </Link>
           </li>
+          { !isUser && (<div className='flex gap-5'>
           <li>
             <Link 
-              className='fonts-montserrat leading-normal text-lg  hover:text-coral-red'
+              className='fonts-montserrat leading-normal text-lg text-slate-gray hover:text-coral-red'
               to="#"
-              onClick={() => {
-                setIsHamburgerClicked(false);
-                dialog();
-              }}
+              onClick={() => dialog()}
             >
               Sign In / Sign Up
             </Link>
           </li>
+        </div>)}
         </ul>
           </div>
         )}
@@ -73,7 +74,7 @@ const Nav = ({ dialog, isUser, user }) => {
             alt="Logo"
             width={130}
             height={29}
-            className='xl:mr-96 lg:mr-40'
+            className='ml-5 xl:mr-96 lg:mr-40'
           />
         </Link>
         <ul className='flex flex-1 justify-between items-center max-lg:hidden'>
@@ -114,21 +115,30 @@ const Nav = ({ dialog, isUser, user }) => {
               Sign In / Sign Up
             </Link>
           </li>
-        </div>)}
+        </div>)}       
+        </ul>
+        <ul className='absolute right-[10%]'>
         { isUser && (
-         <li className='flex gap-5'>
-          <User2 className='text-slate-gray hover:text-coral-red cursor-pointer' />
-          <Link to="cart">
-            <ShoppingCart 
-              className='text-slate-gray cursor-pointer hover:text-coral-red' 
-            />
-          </Link>
-         </li>
-   )}
-       
+            <li className='flex gap-5'>
+              <User2 
+                className='text-slate-gray hover:text-coral-red cursor-pointer' 
+                onClick={() => setDropdown(!dropdown)}
+              />
+              {dropdown && (
+                <Dropdown />
+              )}
+              <Link to="cart">
+                <ShoppingCart 
+                  className='text-slate-gray cursor-pointer hover:text-coral-red' 
+                />
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
+      
     </header>
+    
   )
 }
 
