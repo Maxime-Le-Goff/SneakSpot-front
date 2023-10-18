@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
+import PaymentForm from '../components/PaymentForm';
 
 const Payment = () => {
   const [amount, setAmount] = useState(1000); // Amount in cents
@@ -19,6 +20,7 @@ const Payment = () => {
       const response = await axios.post('http://localhost:8080/api/create-payment-intent', {
         amount: amount,
       });
+      console.log(response);
       const { clientSecret } = await response.data;
 
       const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
@@ -38,21 +40,11 @@ const Payment = () => {
   return (
 
     <main className="relative">
-        <section className="padding-x">
-            <div className="max-container pt-12 lg:pt-24">
-                <h1 className="mt-10 font-palanquin text-4xl max-sm:text-[45px] max-sm:leading-[70px] font-bold ">Your
-                <span className="text-coral-red inline-mt-3"> Cart</span>
-                </h1>
-                <div className="flex justify-between flex-col sm:flex-row sm:items-center mt-6 mb-14">
-                    <p className="font-monsterrat text-slate-gray text-lg leading-8">Pay your Sneakers</p>
-                </div>
-            </div>
-        </section>
-        <section className='padding-x padding-b'>
-            <form onSubmit={handleSubmit}>
-                <CardElement className='border border-slate-200 p-5 rounded-md text-slate-gray'/>
-                <button type="submit">Pay</button>
-            </form>
+      <div className="max-container pt-12 lg:pt-24"/>
+      <section className='padding-x padding-b'>
+          <div className='flex flex-col min-h-screen justify-center items-center bg-slate-50 pb-14'>
+            <PaymentForm handleSubmit={handleSubmit} />
+          </div>
         </section>
     </main>
     

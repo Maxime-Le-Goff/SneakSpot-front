@@ -24,6 +24,9 @@ import sneaker10 from './sneaker10.jpg'
 
 import shoe8 from './shoe8.svg'
 
+import visa from './visa.png'
+import chip from './chip.png'
+
 export {
     bigShoe1,
     bigShoe2,
@@ -49,4 +52,7 @@ export {
     sneaker10,
 
     shoe8,
+
+    visa,
+    chip
 }

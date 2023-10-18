@@ -190,3 +190,33 @@
 	justify-content:center;
 	align-items: center;
 }
+
+.negative_margin {
+	margin-bottom:-20px
+}
+
+.gradient {
+	background: hsla(6, 100%, 66%, 1);
+
+	background: linear-gradient(45deg, hsla(6, 100%, 66%, 1) 0%, hsla(322, 63%, 51%, 1) 100%);
+	
+	background: -moz-linear-gradient(45deg, hsla(6, 100%, 66%, 1) 0%, hsla(322, 63%, 51%, 1) 100%);
+	
+	background: -webkit-linear-gradient(45deg, hsla(6, 100%, 66%, 1) 0%, hsla(322, 63%, 51%, 1) 100%);
+	
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FF6452", endColorstr="#D13197", GradientType=1 );
+}
+
+.backface_visibility {
+	backface-visibility: hidden;
+}
+
+.transform_perspective {
+	transform: perspective(1000px) rotateY(var(--back));
+	transition: 0.4s ease-out;
+}
+
+.transform_perspective_0_deg {
+	transform: perspective(1000px) rotateY(var(--front));
+	transition: 0.4s ease-out;
+}
