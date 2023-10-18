@@ -1,4 +1,16 @@
-const CartCard = ({ brand, color, img, model, price, rating }) => {
+import { deleteProductFromCart, fetchUserCart } from "../api"
+
+const CartCard = ({ id, brand, img, model, price, allProducts, setProducts }) => {
+
+    const handleProductDeleteFromCart = async() => {
+        const success = await deleteProductFromCart(id);
+        if (success) {
+            // Update the local cart state after a successful removal
+            const updatedCart = allProducts.filter((product) => product.id !== id);
+            setProducts(updatedCart);
+          }
+        };
+    
   return (
     <div className="border border-slate-200 flex flex-col lg:h-[250px] lg:flex-row shadow-md">
         <div className="lg:w-[40%] h-[225px] lg:h-fit flex justify-center items-center bg-hero bg-cover bg-center">
@@ -23,7 +35,13 @@ const CartCard = ({ brand, color, img, model, price, rating }) => {
                 <p className="text-emerald-400 font-semibold sm:text-lg">FREE</p>
             </div>
             <div className="border border-t-slate-200 h-full w-full flex items-center pl-5 py-3 lg:py-0">
-                <a className="text-sky-600 cursor-pointer">Delete</a>
+                <a 
+                    className="text-sky-600 cursor-pointer hover:underline"
+                    onClick={() => handleProductDeleteFromCart()}
+                >
+                    Delete
+                </a>
+                    
             </div>
         </div>
     </div>

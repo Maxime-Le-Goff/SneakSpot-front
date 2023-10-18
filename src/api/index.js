@@ -99,15 +99,32 @@ export const heroDataLoader = () => {
               headers: {
                 'Authorization': `Bearer ${token}`,
               },
-            });
+            })
         
             return JSON.parse(response.data);
           } catch (error) {
             // Handle errors, e.g., token expiration
             console.error('Error fetching user profile:', error);
-            return null; // Return null or handle the error as needed
+            return null;
           }
         }
         
+      };
+
+      export const deleteProductFromCart = async (productId) => {
+        try {
+          const token = localStorage.getItem('token');
+          const response = await axios.delete(`http://localhost:8080/api/delete_product_from_cart/${productId}`, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+      
+          
+            return true; // The request was successful
+        } catch (error) {
+          console.error('Error deleting product from cart:', error);
+          return false; // Handle the error and return a failure flag
+        }
       };
       

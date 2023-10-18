@@ -1,13 +1,24 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import FilterItem from '../components/FilterItem';
 import { filters, prices } from '../constants';
 
 const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFilters, selectedBrandFilters, selectedPriceFilters }) => {
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(null);
   const[data, setData] = useState();
-  const allFilters = selectedBrandFilters.concat(selectedCategoryFilters).concat(selectedPriceFilters);
+  console.log(selectedPriceFilters);
+  const formattedPriceFilters = selectedPriceFilters.map((filter) => {
+    if(filter === '101, 100000') {
+      const parts = filter.split(',');
+      return parts[0] + '$ +';
+    } else {
+      const range = filter.split(',').join('-') + '$';
+      return range;
+    }
 
-  const toggleMenu = (e,index) => {
+  });
+  const allFilters = selectedBrandFilters.concat(selectedCategoryFilters).concat(formattedPriceFilters);
+
+  const toggleMenu = useCallback((e,index) => {
     const value = (e.target.textContent).split(' ')[0];
     
     if(value === "brands") {
@@ -21,7 +32,7 @@ const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFil
     }
 
     setSelectedMenuIndex((prevIndex) => (prevIndex === index ? null : index));
-  };
+  }, [setData, brands, types, setSelectedMenuIndex]);
 
   const menuItems = useMemo(() =>
     filters.map((filter, index) => (
@@ -52,7 +63,7 @@ const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFil
         <div className='flex gap-x-10 gap-y-3 padding-x flex-wrap justify-center items-center'>
         {
           allFilters.map((filter, index) => (
-            <div key={index} className='mt-5 rounded-xl px-5 py-3 bg-pale-blue text-slate-gray max-w-max justify-center items-center flex font-montserrat'>
+            <div key={index} className='mt-5 rounded-sm px-5 py-3 bg-pale-blue text-slate-gray max-w-max justify-center items-center flex font-montserrat shadow-md'>
               <p>{filter}</p>
             </div>
           ))

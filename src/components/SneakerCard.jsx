@@ -3,7 +3,7 @@ import StarRating from "./StarRating";
 import { Heart } from "lucide-react";
 import axios from "axios";
 
-const SneakerCard = ({ id, model, price, img, brand, description,color, rating }) => {
+const SneakerCard = ({ id, model, price, img, brand, description,color, rating, setOpenDialog }) => {
 
 	const brandStyle = {
 		'--brand': `"${brand.name}"`,
@@ -18,28 +18,28 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 			const data = {
 				id: id,
 			};
-		try {
-			const response = await axios.post('http://localhost:8080/api/product_to_cart',data, {
-				headers: {
-					'Authorization': `Bearer ${token}`
-				},
-			})
-			if (response.data.success) {
-				console.log(response);
-				setIsAddedToCart(true);
-				setTimeout(() => {
-					setIsAddedToCart(false)
-				}, 3000)
-	
+			try {
+				const response = await axios.post('http://localhost:8080/api/product_to_cart',data, {
+					headers: {
+						'Authorization': `Bearer ${token}`
+					},
+				})
+				if (response.data.success) {
+					console.log(response);
+					setIsAddedToCart(true);
+					setTimeout(() => {
+						setIsAddedToCart(false)
+					}, 3000)
+		
+			} else {
+				console.log('Error:', response);
+			}
+			} catch (error) {
+				console.log(error);
+			}
 		} else {
-			console.log('Error:', response);
+			setOpenDialog(true);
 		}
-		} catch (error) {
-			console.log(error);
-		}
-	} else {
-		console.log('not connected');
-	}
 	}
 
   return (
@@ -83,7 +83,7 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating }
 						className="bg-coral-red hover:bg-red-500"
 						onClick={() => handleAddToCart() }	
 					>
-						ADD to CARD
+						ADD to CART
 					</a>
 				</div>
 			</div>

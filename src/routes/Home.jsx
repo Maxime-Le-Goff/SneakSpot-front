@@ -1,8 +1,11 @@
 import { Hero, SuperQuality, CustomerReviews, PopularProducts, Services, Subscribe} from '../sections';
 import { useLoaderData } from 'react-router-dom';
+import { useOutletContext } from "react-router-dom";
 
 const Home = ({ handleDialog }) => {
+
   const data = useLoaderData();
+  const setOpenDialog = useOutletContext();
   const randomProducts = data.randomProducts;
   const popularProducts = data.popularProducts;
   const bigImg = data.randomProducts[0].img;
@@ -18,7 +21,7 @@ const Home = ({ handleDialog }) => {
     <section className="padding">
       <PopularProducts 
       popularProducts={popularProducts}
-      handleDialog={handleDialog}
+      setOpenDialog={setOpenDialog}
     />
     </section>
     <section className="padding">

@@ -1,10 +1,11 @@
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useOutletContext } from "react-router-dom"
 import { FilterSneakers } from "../sections"
 import { ProductsDisplay } from "../sections";
 import { useEffect, useState } from "react";
 
 const Products = () => {
   const data = useLoaderData();
+  const setOpenDialog = useOutletContext();
   const sneakers = data.allSneakers;
   const brands = data.brands;
   const categories = data.categories;
@@ -34,7 +35,6 @@ const Products = () => {
             selectedPriceFilters.some((priceRange) => {
               const int1 = parseInt(priceRange.split(',')[0]);
               const int2 = parseInt(priceRange.split(',')[1]);
-              console.log(int1, int2);
               if (sneakerPrice >= int1 && sneakerPrice <= int2) {
                 return true;
               } else {
@@ -87,7 +87,7 @@ const Products = () => {
         <FilterSneakers brands={brands} types={categories} handleFilterChange={handleFilterChange} selectedCategoryFilters={selectedCategoryFilters} selectedBrandFilters={selectedBrandFilters} selectedPriceFilters={selectedPriceFilters} />
       </section>
       <section className="padding-x padding-b">
-        <ProductsDisplay allSneakers={filteredData} />
+        <ProductsDisplay allSneakers={filteredData} setOpenDialog={setOpenDialog} />
       </section>
     </main>
   )

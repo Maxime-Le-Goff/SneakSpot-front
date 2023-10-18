@@ -2,6 +2,7 @@ import Button from "../components/Button"
 import { arrowRight } from '../assets/icons'
 import { ShoeCard } from "../components";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Hero = ({ shoes, bigImg }) => {
   const [showBigImg, setShowBigImg] = useState(bigImg);
@@ -19,11 +20,12 @@ const Hero = ({ shoes, bigImg }) => {
         <span className="text-coral-red inline-block mt-3">Sneakers</span>
         </h1>
         <p className="font-monsterrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">Discover stylish Sneakers arrivals, quality comfort and innovation for your active life</p>
-        <Button 
-          label="Shop Now"
-          iconURL={arrowRight}
-
-        />
+        <Link to='sneakers'>
+          <Button 
+            label="Shop Now"
+            iconURL={arrowRight}
+            />
+        </Link>
         <div className="flex justify-starts items-start flex-wrap w-full mt-20 gap-16">
           <div>
           <p className="text-4xl font-palanquin font-bold">1K+</p>

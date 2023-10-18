@@ -1,4 +1,16 @@
-const CartRecap = ({ totalPrice, nbrArticles }) => {
+import { useEffect, useState } from "react";
+
+const CartRecap = ({ allProducts }) => {
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [nbrArticles, setNbrArticles] = useState(0);
+    
+    useEffect(() => {
+        const newTotalPrice = allProducts.reduce((accumulator, product) => accumulator + product.price, 0);
+        setTotalPrice(newTotalPrice);
+        const newNbrArticles = allProducts.reduce((accumulator, product) => accumulator + 1 , 0);
+        setNbrArticles(newNbrArticles);
+    },[allProducts])
+    
   return (
 
     <div className="flex flex-col w-full lg:w-[30%] gap-5 text-base sm:text-lg font-montserrat">
@@ -11,7 +23,7 @@ const CartRecap = ({ totalPrice, nbrArticles }) => {
             <p className="text-slate-gray font-palanquin">{nbrArticles} articles</p>
             <hr className="my-5" />
             <div className="flex justify-between">
-                <h4 className="font-semibold">shipping</h4>
+                <h4 className="font-semibold">Shipping</h4>
                 <p className="text-sm sm:text-base">TBD</p>
             </div>
             <p className="text-slate-gray font-palanquin">Modify the Shipment</p>

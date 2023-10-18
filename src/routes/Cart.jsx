@@ -5,15 +5,13 @@ import { useEffect, useState } from "react";
 
 const Cart = () => {
 
-    const products = useLoaderData().products;
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [nbrArticles, setNbrArticles] = useState(0);
+    const data = useLoaderData().products;
+    const [products, setProducts] = useState([]);
+
+
     useEffect(() => {
-        const newTotalPrice = products.reduce((accumulator, product) => accumulator + product.price, 0);
-        setTotalPrice(newTotalPrice);
-        const newNbrArticles = products.reduce((accumulator, product) => accumulator + 1 , 0);
-        setNbrArticles(newNbrArticles);
-    }, [products]);
+        setProducts(data);
+    }, [data]);
     
 
   return (
@@ -37,11 +35,13 @@ const Cart = () => {
                             key={product.id}
                             brand={product.brands}
                             {...product}
+                            allProducts ={products}
+                            setProducts={setProducts}
                         />
                     ))
                 }
                 </div>
-                    <CartRecap totalPrice={totalPrice} nbrArticles={nbrArticles} />
+                    <CartRecap allProducts={products} />
             </section>
         </section>
     </main>

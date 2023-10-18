@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { ShoppingCart, User2 } from 'lucide-react';
 import Dropdown from './Dropdown';
 
-const Nav = ({ dialog, isUser, user, handleUser }) => {
+const Nav = ({ dialog, isUser, handleUser }) => {
 
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
   const [dropdown, setDropdown] = useState(false);

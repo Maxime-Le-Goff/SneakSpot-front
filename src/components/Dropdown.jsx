@@ -1,7 +1,7 @@
 import { LogOut, Truck } from "lucide-react"
 import { useNavigate } from "react-router-dom";
 
-const Dropdown = ({ handleUser }) => {
+const Dropdown = ({ handleUser, user }) => {
 
   const navigate = useNavigate();
 
