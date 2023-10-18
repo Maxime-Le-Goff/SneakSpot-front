@@ -27,7 +27,7 @@ const Cart = () => {
             </div>
         </section>
         <section className="padding-x padding-b">
-            <section className=" max-container max-sm:mt-12 flex flex-col lg:flex-row gap-5">
+            <div className=" max-container max-sm:mt-12 flex flex-col lg:flex-row gap-5">
                 <div className="flex flex-col w-full lg:w-[65%] gap-10">
                 {
                     products.map((product) => (
@@ -42,7 +42,7 @@ const Cart = () => {
                 }
                 </div>
                     <CartRecap allProducts={products} />
-            </section>
+            </div>
         </section>
     </main>
   )

@@ -25,7 +25,6 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating, 
 					},
 				})
 				if (response.data.success) {
-					console.log(response);
 					setIsAddedToCart(true);
 					setTimeout(() => {
 						setIsAddedToCart(false)

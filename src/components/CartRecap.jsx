@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const CartRecap = ({ allProducts }) => {
     const [totalPrice, setTotalPrice] = useState(0);
@@ -35,7 +36,15 @@ const CartRecap = ({ allProducts }) => {
         </div>
         <div className="border border-slate-200 px-5">
             <p className="text-xs text-slate-gray leading-5 mt-5">By clicking on «Proceed to Checkout», I accept the Terms of Use and the Privacy Statement.</p>
-            <button className="w-full bg-coral-red text-white p-3 font-semibold my-5 hover:bg-red-500">Proceed to Checkout</button>
+            <Link
+                to='/payments'
+            >
+            <button 
+                className="w-full bg-coral-red text-white p-3 font-semibold my-5 hover:bg-red-500"
+            >
+                Proceed to Checkout
+            </button>
+            </Link>
         </div>
     </div>
   )
