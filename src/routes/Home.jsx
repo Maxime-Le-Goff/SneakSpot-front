@@ -5,7 +5,8 @@ import { useOutletContext } from "react-router-dom";
 const Home = ({ handleDialog }) => {
 
   const data = useLoaderData();
-  const setOpenDialog = useOutletContext();
+  const setOpenDialog = useOutletContext()[1];
+  const user = useOutletContext()[0];
   const randomProducts = data.randomProducts;
   const popularProducts = data.popularProducts;
   const bigImg = data.randomProducts[0].img;
@@ -22,6 +23,7 @@ const Home = ({ handleDialog }) => {
       <PopularProducts 
       popularProducts={popularProducts}
       setOpenDialog={setOpenDialog}
+      user={user}
     />
     </section>
     <section className="padding">

@@ -3,7 +3,7 @@ import StarRating from "./StarRating";
 import { Heart } from "lucide-react";
 import axios from "axios";
 
-const SneakerCard = ({ id, model, price, img, brand, description,color, rating, setOpenDialog }) => {
+const SneakerCard = ({ id, model, price, img, brand, description,color, rating, setOpenDialog, user }) => {
 
 	const brandStyle = {
 		'--brand': `"${brand.name}"`,
@@ -17,13 +17,14 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating, 
 			const token = localStorage.getItem("token");
 			const data = {
 				id: id,
+				email: user.email,
 			};
 			try {
 				const response = await axios.post('http://localhost:8080/api/product_to_cart',data, {
 					headers: {
 						'Authorization': `Bearer ${token}`
 					},
-				})
+				});
 				if (response.data.success) {
 					setIsAddedToCart(true);
 					setTimeout(() => {

@@ -6,7 +6,7 @@ import Dialog from '../components/Dialog';
 const Root = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const [isUser, setIsUser] = useState(false);
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
 
     const handleDialog = () => {
         setOpenDialog(!openDialog);
@@ -48,7 +48,7 @@ const Root = () => {
         <>
             <Nav dialog={handleDialog} isUser={isUser} handleUser={handleUser} />
             <Dialog open={openDialog} handleDialog={handleDialog} handleUser={handleUser} />
-            <Outlet context={setOpenDialog}/>
+            <Outlet context={[user, handleDialog]}/>
             <section className="bg-black padding-x padding-t pb-8">
             <Footer />
             </section>

@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const NavDataLoader = () => {
-    const res = axios.get(`http://localhost:8080/api/`)
+    const res = axios.get(`http://localhost:8080/home/`)
     .then(res => {
             const brands = JSON.parse(res.data.brands);
             const sneakers = JSON.parse(res.data.categories);
@@ -14,7 +14,7 @@ export const NavDataLoader = () => {
 };
 
 export const heroDataLoader = () => {
-    const res = axios.get(`http://localhost:8080/api/`)
+    const res = axios.get(`http://localhost:8080/home/`)
     .then(res => {
             const randomProducts = JSON.parse(res.data.products);
             const popularProducts = JSON.parse(res.data.topRatedProducts);
@@ -28,21 +28,21 @@ export const heroDataLoader = () => {
 
   export const SneakerPageLoader = () => {
         // Create an array of Promises for each Axios request
-        const sneakerPromise = axios.get(`http://localhost:8080/api/product`)
+        const sneakerPromise = axios.get(`http://localhost:8080/product`)
           .then(res => JSON.parse(res.data))
           .catch(err => {
             console.error('Error fetching sneakers:', err);
             return []; // Return an empty array or handle the error as needed
           });
       
-        const brandPromise = axios.get(`http://localhost:8080/api/brand`)
+        const brandPromise = axios.get(`http://localhost:8080/brand`)
           .then(res => JSON.parse(res.data))
           .catch(err => {
             console.error('Error fetching brands:', err);
             return []; // Return an empty array or handle the error as needed
           });
       
-        const categoryPromise = axios.get(`http://localhost:8080/api/category`)
+        const categoryPromise = axios.get(`http://localhost:8080/category`)
           .then(res => JSON.parse(res.data))
           .catch(err => {
             console.error('Error fetching categories:', err);
@@ -61,7 +61,7 @@ export const heroDataLoader = () => {
       };
       
       export const BrandsPageLoader = () => {
-        const res = axios.get(`http://localhost:8080/api/brand`)
+        const res = axios.get(`http://localhost:8080/brand`)
         .then(res => {
           const brands = JSON.parse(res.data);
           return brands;
@@ -73,9 +73,13 @@ export const heroDataLoader = () => {
         return res;
       }
 
-      export const fetchUserProfile = async (token) => {
+      export const fetchUserProfile = async (email, token) => {
         try {
-          const response = await axios.get('http://localhost:8080/api/user-profile', {
+          const response = await axios.post('http://localhost:8080/api/user-profile', {
+            
+            email:email,
+        },
+           {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
@@ -90,16 +94,20 @@ export const heroDataLoader = () => {
         }
       };
 
-      export const fetchUserCart = async () => {
+      export const fetchUserCart = async (userEmail) => {
 
         if(localStorage.getItem('token')) {
+          console.log('oui');
           try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:8080/api/user_cart', {
-              headers: {
+            const response = await axios.post('http://localhost:8080/api/user_cart', {
+              email: userEmail,
+          },
+          {
+            headers: {
                 'Authorization': `Bearer ${token}`,
               },
-            })
+            });
         
             return JSON.parse(response.data);
           } catch (error) {
@@ -111,17 +119,20 @@ export const heroDataLoader = () => {
         
       };
 
-      export const deleteProductFromCart = async (productId) => {
+      export const deleteProductFromCart = async (userEmail, productId) => {
         try {
           const token = localStorage.getItem('token');
-          const response = await axios.delete(`http://localhost:8080/api/delete_product_from_cart/${productId}`, {
-            headers: {
+          const response = await axios.post(`http://localhost:8080/api/delete_product_from_cart/${productId}`, {
+            email: userEmail,
+        },
+        {
+          headers: {
               'Authorization': `Bearer ${token}`,
             },
           });
       
           
-            return true; // The request was successful
+            return response; // The request was successful
         } catch (error) {
           console.error('Error deleting product from cart:', error);
           return false; // Handle the error and return a failure flag

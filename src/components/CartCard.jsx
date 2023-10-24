@@ -1,9 +1,9 @@
 import { deleteProductFromCart, fetchUserCart } from "../api"
 
-const CartCard = ({ id, brand, img, model, price, allProducts, setProducts }) => {
+const CartCard = ({ id, brand, img, model, price, allProducts, setProducts, user }) => {
 
     const handleProductDeleteFromCart = async() => {
-        const success = await deleteProductFromCart(id);
+        const success = await deleteProductFromCart(user.email, id);
         if (success) {
             // Update the local cart state after a successful removal
             const updatedCart = allProducts.filter((product) => product.id !== id);

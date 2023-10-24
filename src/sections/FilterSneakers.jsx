@@ -5,7 +5,6 @@ import { filters, prices } from '../constants';
 const FilterSneakers = ({ brands, types, handleFilterChange, selectedCategoryFilters, selectedBrandFilters, selectedPriceFilters }) => {
   const [selectedMenuIndex, setSelectedMenuIndex] = useState(null);
   const[data, setData] = useState();
-  console.log(selectedPriceFilters);
   const formattedPriceFilters = selectedPriceFilters.map((filter) => {
     if(filter === '101, 100000') {
       const parts = filter.split(',');

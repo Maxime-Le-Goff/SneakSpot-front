@@ -1,8 +1,11 @@
 import { useState } from "react"
 import { chip, visa } from "../assets/images"
+import { useElements, useStripe } from "@stripe/react-stripe-js";
 
 const PaymentForm = ({ handleSubmit }) => {
 
+    const stripe = useStripe();
+    const elements = useElements();
     const [cardHolder, setCardHolder] = useState('full name');
     const [cardNumber, setCardNumber] = useState('##########');
     const [month, setMonth] = useState('month');

@@ -1,6 +1,6 @@
 import { SneakerCard } from "../components"
 
-const PopularProducts = ({ popularProducts, setOpenDialog }) => {
+const PopularProducts = ({ popularProducts, setOpenDialog, user }) => {
   return (
     <section
       id="products"
@@ -18,6 +18,7 @@ const PopularProducts = ({ popularProducts, setOpenDialog }) => {
               key={index}
               {...product}
               setOpenDialog={setOpenDialog}
+              user={user}
             />
         )
         )

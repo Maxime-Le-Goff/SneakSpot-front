@@ -1,6 +1,6 @@
 import { SneakerCard } from "../components"
 
-const ProductsDisplay = ({ allSneakers, setOpenDialog }) => {
+const ProductsDisplay = ({ allSneakers, setOpenDialog, user }) => {
   return (
     <section className="max-container max-sm:mt-12">
     <p className="mt-10 font-palanquin font-semibold text-gray-950 text-lg"> {allSneakers.length === 0 ? 'No Results Found' : `${allSneakers.length} Results` } </p>
@@ -11,6 +11,7 @@ const ProductsDisplay = ({ allSneakers, setOpenDialog }) => {
                         key={index}
                         {...sneaker}
                         setOpenDialog={setOpenDialog}
+                        user={user}
                     />
                 ))
             }

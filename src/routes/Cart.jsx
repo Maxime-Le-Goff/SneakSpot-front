@@ -1,17 +1,21 @@
-import { useLoaderData } from "react-router-dom"
+import { useOutletContext } from "react-router-dom"
 import CartCard from "../components/CartCard"
 import CartRecap from "../components/CartRecap";
 import { useEffect, useState } from "react";
+import { fetchUserCart } from "../api";
 
 const Cart = () => {
 
-    const data = useLoaderData().products;
+    const user = useOutletContext()[0];
     const [products, setProducts] = useState([]);
 
 
     useEffect(() => {
-        setProducts(data);
-    }, [data]);
+        fetchUserCart(user.email)
+            .then(data => {
+                setProducts(data.products);
+            });
+    }, [user.email]);
     
 
   return (
@@ -37,6 +41,7 @@ const Cart = () => {
                             {...product}
                             allProducts ={products}
                             setProducts={setProducts}
+                            user={user}
                         />
                     ))
                 }

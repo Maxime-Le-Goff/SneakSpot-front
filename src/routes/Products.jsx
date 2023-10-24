@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 
 const Products = () => {
   const data = useLoaderData();
-  const setOpenDialog = useOutletContext();
+  const setOpenDialog = useOutletContext()[1];
+  const user = useOutletContext()[0];
   const sneakers = data.allSneakers;
   const brands = data.brands;
   const categories = data.categories;
@@ -87,7 +88,7 @@ const Products = () => {
         <FilterSneakers brands={brands} types={categories} handleFilterChange={handleFilterChange} selectedCategoryFilters={selectedCategoryFilters} selectedBrandFilters={selectedBrandFilters} selectedPriceFilters={selectedPriceFilters} />
       </section>
       <section className="padding-x padding-b">
-        <ProductsDisplay allSneakers={filteredData} setOpenDialog={setOpenDialog} />
+        <ProductsDisplay allSneakers={filteredData} setOpenDialog={setOpenDialog} user={user} />
       </section>
     </main>
   )
