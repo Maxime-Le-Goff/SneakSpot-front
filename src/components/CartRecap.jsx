@@ -2,14 +2,22 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const CartRecap = ({ allProducts }) => {
+
     const [totalPrice, setTotalPrice] = useState(0);
     const [nbrArticles, setNbrArticles] = useState(0);
+
+    const handleClick = () => {
+        localStorage.setItem('amount', totalPrice);
+    }
     
     useEffect(() => {
+
         const newTotalPrice = allProducts.reduce((accumulator, product) => accumulator + product.price, 0);
         setTotalPrice(newTotalPrice);
+
         const newNbrArticles = allProducts.reduce((accumulator, product) => accumulator + 1 , 0);
         setNbrArticles(newNbrArticles);
+
     },[allProducts])
     
   return (
@@ -38,6 +46,7 @@ const CartRecap = ({ allProducts }) => {
             <p className="text-xs text-slate-gray leading-5 mt-5">By clicking on «Proceed to Checkout», I accept the Terms of Use and the Privacy Statement.</p>
             <Link
                 to='/payments'
+                onClick={handleClick}
             >
             <button 
                 className="w-full bg-coral-red text-white p-3 font-semibold my-5 hover:bg-red-500"

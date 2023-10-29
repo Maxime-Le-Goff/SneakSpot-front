@@ -6,16 +6,15 @@ import { fetchUserCart } from "../api";
 
 const Cart = () => {
 
-    const user = useOutletContext()[0];
     const [products, setProducts] = useState([]);
 
 
     useEffect(() => {
-        fetchUserCart(user.email)
+        fetchUserCart()
             .then(data => {
                 setProducts(data.products);
             });
-    }, [user.email]);
+    }, []);
     
 
   return (
@@ -41,7 +40,6 @@ const Cart = () => {
                             {...product}
                             allProducts ={products}
                             setProducts={setProducts}
-                            user={user}
                         />
                     ))
                 }

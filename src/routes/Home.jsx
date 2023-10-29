@@ -2,11 +2,10 @@ import { Hero, SuperQuality, CustomerReviews, PopularProducts, Services, Subscri
 import { useLoaderData } from 'react-router-dom';
 import { useOutletContext } from "react-router-dom";
 
-const Home = ({ handleDialog }) => {
+const Home = () => {
 
   const data = useLoaderData();
-  const setOpenDialog = useOutletContext()[1];
-  const user = useOutletContext()[0];
+  const setOpenDialog = useOutletContext();
   const randomProducts = data.randomProducts;
   const popularProducts = data.popularProducts;
   const bigImg = data.randomProducts[0].img;
@@ -23,7 +22,6 @@ const Home = ({ handleDialog }) => {
       <PopularProducts 
       popularProducts={popularProducts}
       setOpenDialog={setOpenDialog}
-      user={user}
     />
     </section>
     <section className="padding">

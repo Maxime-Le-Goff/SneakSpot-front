@@ -48,7 +48,7 @@ const Root = () => {
         <>
             <Nav dialog={handleDialog} isUser={isUser} handleUser={handleUser} />
             <Dialog open={openDialog} handleDialog={handleDialog} handleUser={handleUser} />
-            <Outlet context={[user, handleDialog]}/>
+            <Outlet context={handleDialog}/>
             <section className="bg-black padding-x padding-t pb-8">
             <Footer />
             </section>

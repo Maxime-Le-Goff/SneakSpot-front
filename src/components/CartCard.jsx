@@ -1,9 +1,9 @@
 import { deleteProductFromCart, fetchUserCart } from "../api"
 
-const CartCard = ({ id, brand, img, model, price, allProducts, setProducts, user }) => {
+const CartCard = ({ id, brand, img, model, price, allProducts, setProducts }) => {
 
     const handleProductDeleteFromCart = async() => {
-        const success = await deleteProductFromCart(user.email, id);
+        const success = await deleteProductFromCart(id);
         if (success) {
             // Update the local cart state after a successful removal
             const updatedCart = allProducts.filter((product) => product.id !== id);
@@ -19,18 +19,15 @@ const CartCard = ({ id, brand, img, model, price, allProducts, setProducts, user
                 className=" w-fit h-[250px]"
             />
         </div>
-        <div className="flex flex-col gap-4 capitalize w-full">
-            <div className="pt-5 flex items-center justify-between px-5 text-base">
+        <div className="flex flex-col gap-4 capitalize w-full ">
+            <div className="pt-5 flex items-center justify-between px-5 text-base h-[100%]">
                 <h2 className="font-montserrat text-coral-red font-semibold sm:text-2xl">{brand.name} {model}</h2>
                 <h3 className="font-montserrat text-slate-gray font-semibold sm:text-xl">{price}.00$</h3>
             </div>
-            <div className="flex mt-5 pl-5 text-sm">
-            <p className="sm:text-lg text-slate-gray font-semibold font-montserrat uppercase"><span>Size :</span> 43</p>
+            <div className="flex pl-5 text-sm h-[100%]">
+                <p className="sm:text-lg text-slate-gray font-semibold font-montserrat uppercase"><span>Quantity :</span> 1</p>
             </div>
-            <div className="flex pl-5 text-sm">
-            <p className="sm:text-lg text-slate-gray font-semibold font-montserrat uppercase"><span>Quantity :</span> 1</p>
-            </div>
-            <div className="flex justify-between px-5">
+            <div className="flex justify-between px-5 h-[100%]">
                 <p className="mb-4 font-montserra text-sm text-slate-gray sm:text-base">Home Delivery</p>
                 <p className="text-emerald-400 font-semibold sm:text-lg">FREE</p>
             </div>

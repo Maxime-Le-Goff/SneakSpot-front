@@ -76,7 +76,6 @@ export const heroDataLoader = () => {
       export const fetchUserProfile = async (email, token) => {
         try {
           const response = await axios.post('http://localhost:8080/api/user-profile', {
-            
             email:email,
         },
            {
@@ -85,23 +84,21 @@ export const heroDataLoader = () => {
             },
           });
       
-          // The user data is in response.data.user
           return JSON.parse(response.data);
         } catch (error) {
-          // Handle errors, e.g., token expiration
           console.error('Error fetching user profile:', error);
-          return null; // Return null or handle the error as needed
+          return null;
         }
       };
 
-      export const fetchUserCart = async (userEmail) => {
+      export const fetchUserCart = async () => {
 
         if(localStorage.getItem('token')) {
-          console.log('oui');
           try {
             const token = localStorage.getItem('token');
+            const email = localStorage.getItem('user');
             const response = await axios.post('http://localhost:8080/api/user_cart', {
-              email: userEmail,
+              email: email,
           },
           {
             headers: {
@@ -119,11 +116,12 @@ export const heroDataLoader = () => {
         
       };
 
-      export const deleteProductFromCart = async (userEmail, productId) => {
+      export const deleteProductFromCart = async (productId) => {
         try {
           const token = localStorage.getItem('token');
+          const email = localStorage.getItem('user');
           const response = await axios.post(`http://localhost:8080/api/delete_product_from_cart/${productId}`, {
-            email: userEmail,
+            email: email,
         },
         {
           headers: {
@@ -138,4 +136,68 @@ export const heroDataLoader = () => {
           return false; // Handle the error and return a failure flag
         }
       };
+
+      export const removeAllProductsFromCart = async() => {
+        try {
+          const token = localStorage.getItem('token');
+          const email = localStorage.getItem('user');
+          const response = await axios.post(`http://localhost:8080/api/delete_all_products_from_cart`, {
+            email: email,
+        },
+        {
+          headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          });
       
+          
+            return response;
+        } catch (error) {
+          console.error('Error deleting product from cart:', error);
+          return false;
+        }
+      };
+
+      export const createOrder = async () => {
+
+        try {
+          const token = localStorage.getItem('token');
+          const email = localStorage.getItem('user');
+          const amount = localStorage.getItem('amount');
+          const response = await axios.post(`http://localhost:8080/api/create_order`, {
+            email: email,
+            amount: amount,
+        },
+        {
+          headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+          
+          return response;
+
+        } catch(error) {
+          console.log(error);
+        }
+      };
+
+      export const getOrders = async () => {
+
+        try {
+          const token = localStorage.getItem('token');
+          const email = localStorage.getItem('user');
+          const response = await axios.post(`http://localhost:8080/api/get_orders`, {
+            email: email,
+        },
+        {
+          headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+          
+          return JSON.parse(response.data);
+
+        } catch(error) {
+          console.log(error);
+        }
+      }

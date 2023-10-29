@@ -14,19 +14,21 @@ const Login = ({ handleDialog, handleUser, setInvalidCredentials }) => {
       email: email,
       password: password,
     };
+
     try {
+
       const response = await axios.post('http://localhost:8080/api/login_check', data);
-      console.log(response);
-  
+
       if (response.status === 200 ) {
-        console.log(response);
+
         const token = response.data.token;
         localStorage.setItem('token', token);
+        localStorage.setItem('user', email);
         setEmail('');
         setPassword('');
         handleDialog();
+        
         const userData = await fetchUserProfile(email, token);
-        console.log(userData);
         handleUser(true, userData);
 
       } else {
