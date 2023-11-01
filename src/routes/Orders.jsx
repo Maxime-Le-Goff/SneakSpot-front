@@ -10,7 +10,8 @@ const Orders = () => {
   useEffect(() => {
     const response = getOrders()
     .then(res => {
-      setOrders(res);
+      const reversedArray  = res.reverse();
+      setOrders(reversedArray);
     })
   }, []);
 

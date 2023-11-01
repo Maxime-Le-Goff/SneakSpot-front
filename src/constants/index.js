@@ -39,11 +39,11 @@ export const footerLinks = [
     {
         title: "Products",
         links: [
-            { name: "Air Force 1", link: "/" },
-            { name: "Air Max 1", link: "/" },
-            { name: "Air Jordan 1", link: "/" },
-            { name: "Air Force 2", link: "/" },
-            { name: "Nike Waffle Racer", link: "/" },
+            { name: "Lt Court", link: "/" },
+            { name: "Samba", link: "/" },
+            { name: "1906 Nike", link: "/" },
+            { name: "Air Jordan", link: "/" },
+            { name: "Morphic", link: "/" },
             { name: "Nike Cortez", link: "/" },
         ],
     },
@@ -60,8 +60,8 @@ export const footerLinks = [
     {
         title: "Get in touch",
         links: [
-            { name: "customer@nike.com", link: "mailto:customer@nike.com" },
-            { name: "+92554862354", link: "tel:+92554862354" },
+            { name: "customer@sneakspot.com", link: "mailto:customer@sneakspot.com" },
+            { name: "+92574862454", link: "tel:+92574862454" },
         ],
     },
 ];

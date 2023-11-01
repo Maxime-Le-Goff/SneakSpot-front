@@ -1,7 +1,7 @@
 import { headerLogo } from '../assets/images';
 import { hamburger } from '../assets/icons';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ShoppingCart, User2 } from 'lucide-react';
 import Dropdown from './Dropdown';
 
@@ -9,6 +9,24 @@ const Nav = ({ dialog, isUser, handleUser }) => {
 
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close the dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdown(false);
+      }
+    }
+
+    // Add a click event listener to the entire document
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      // Remove the event listener when the component unmounts
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
   
   return (
     <header className='py-8 absolute z-10 w-full padding-x'>
@@ -123,6 +141,7 @@ const Nav = ({ dialog, isUser, handleUser }) => {
               <User2 
                 className='text-slate-gray hover:text-coral-red cursor-pointer' 
                 onClick={() => setDropdown(!dropdown)}
+                ref={dropdownRef}
               />
               {dropdown && (
                 <Dropdown handleUser={handleUser} />

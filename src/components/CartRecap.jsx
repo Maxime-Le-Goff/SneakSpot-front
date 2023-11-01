@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CartRecap = ({ allProducts }) => {
 
     const [totalPrice, setTotalPrice] = useState(0);
     const [nbrArticles, setNbrArticles] = useState(0);
+    const [emptyCart, setEmptyCart] = useState(false);
+    const navigate = useNavigate();
 
     const handleClick = () => {
-        localStorage.setItem('amount', totalPrice);
+
+        if(totalPrice === 0 ) {
+
+            setEmptyCart(true);
+
+        } else {
+
+            navigate('/payments');
+            localStorage.setItem('amount', totalPrice);
+        }
     }
     
     useEffect(() => {
@@ -22,6 +33,10 @@ const CartRecap = ({ allProducts }) => {
     
   return (
 
+    <>
+    {emptyCart && (
+            <p className="font-montserrat text-red-500 text-lg absolute">Your Cart is empty</p>
+        )}
     <div className="flex flex-col w-full lg:w-[30%] gap-5 text-base sm:text-lg font-montserrat">
         <div className=" border border-slate-200 px-5">
             <h2 className="mt-5 font-semibold text-lg sm:text-2xl">Order Summary</h2>
@@ -45,7 +60,6 @@ const CartRecap = ({ allProducts }) => {
         <div className="border border-slate-200 px-5">
             <p className="text-xs text-slate-gray leading-5 mt-5">By clicking on «Proceed to Checkout», I accept the Terms of Use and the Privacy Statement.</p>
             <Link
-                to='/payments'
                 onClick={handleClick}
             >
             <button 
@@ -55,7 +69,10 @@ const CartRecap = ({ allProducts }) => {
             </button>
             </Link>
         </div>
+        
+
     </div>
+    </>
   )
 }
 

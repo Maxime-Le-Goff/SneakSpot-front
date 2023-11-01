@@ -18,7 +18,6 @@ const Payment = () => {
     const fetchData = async () => {
       const token = localStorage.getItem('token');
       const amount = localStorage.getItem('amount');
-      console.log('oui');
 
       try {
         const response = await axios.post('http://localhost:8080/api/create-payment-intent', amount, {
@@ -48,8 +47,6 @@ const Payment = () => {
               <PaymentForm amount={amount} />
             </Elements>
           )}
-          <Link to="/" className='mt-16 font-semibold hover:text-coral-red'>Return Home</Link>
-
           </div>
     </main>
     

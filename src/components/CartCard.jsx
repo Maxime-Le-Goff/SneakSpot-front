@@ -3,7 +3,9 @@ import { deleteProductFromCart, fetchUserCart } from "../api"
 const CartCard = ({ id, brand, img, model, price, allProducts, setProducts }) => {
 
     const handleProductDeleteFromCart = async() => {
+
         const success = await deleteProductFromCart(id);
+
         if (success) {
             // Update the local cart state after a successful removal
             const updatedCart = allProducts.filter((product) => product.id !== id);
@@ -16,7 +18,7 @@ const CartCard = ({ id, brand, img, model, price, allProducts, setProducts }) =>
         <div className="lg:w-[40%] h-[225px] lg:h-fit flex justify-center items-center bg-hero bg-cover bg-center">
             <img 
                 src={img}
-                className=" w-fit h-[250px]"
+                className="w-fit h-[250px]"
             />
         </div>
         <div className="flex flex-col gap-4 capitalize w-full ">
