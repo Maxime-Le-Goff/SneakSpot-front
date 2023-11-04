@@ -18,7 +18,7 @@ const Login = ({ handleDialog, handleUser, setInvalidCredentials }) => {
 
     try {
 
-      const response = await axios.post('http://localhost:8080/api/login_check', data);
+      const response = await axios.post('/api/login_check', data);
 
       if (response.status === 200 ) {
 

@@ -8,14 +8,12 @@ const Cart = () => {
 
     const [products, setProducts] = useState([]);
 
-
     useEffect(() => {
         fetchUserCart()
             .then(data => {
                 setProducts(data.products);
             });
     }, []);
-    
 
   return (
     <main className="relative">

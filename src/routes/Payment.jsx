@@ -20,7 +20,7 @@ const Payment = () => {
       const amount = localStorage.getItem('amount');
 
       try {
-        const response = await axios.post('http://localhost:8080/api/create-payment-intent', amount, {
+        const response = await axios.post('/api/create-payment-intent', amount, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -41,7 +41,7 @@ const Payment = () => {
   return (
 
     <main className="relative">
-          <div className='flex flex-col min-h-screen justify-center items-center bg-slate-50'>
+          <div className='flex flex-col min-h-screen justify-center items-center bg-slate-50 padding-x'>
           {stripePromise && clientSecret && (
             <Elements stripe={stripePromise} options={{clientSecret}}>
               <PaymentForm amount={amount} />

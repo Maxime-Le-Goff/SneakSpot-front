@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const NavDataLoader = () => {
-    const res = axios.get(`http://localhost:8080/home/`)
+    const res = axios.get(`/home`)
     .then(res => {
             const brands = JSON.parse(res.data.brands);
             const sneakers = JSON.parse(res.data.categories);
@@ -14,7 +14,7 @@ export const NavDataLoader = () => {
 };
 
 export const heroDataLoader = () => {
-    const res = axios.get(`http://localhost:8080/home/`)
+    const res = axios.get(`/home`)
     .then(res => {
             const randomProducts = JSON.parse(res.data.products);
             const popularProducts = JSON.parse(res.data.topRatedProducts);
@@ -28,21 +28,21 @@ export const heroDataLoader = () => {
 
   export const SneakerPageLoader = () => {
         // Create an array of Promises for each Axios request
-        const sneakerPromise = axios.get(`http://localhost:8080/product`)
+        const sneakerPromise = axios.get(`/product`)
           .then(res => JSON.parse(res.data))
           .catch(err => {
             console.error('Error fetching sneakers:', err);
             return []; // Return an empty array or handle the error as needed
           });
       
-        const brandPromise = axios.get(`http://localhost:8080/brand`)
+        const brandPromise = axios.get(`/brand`)
           .then(res => JSON.parse(res.data))
           .catch(err => {
             console.error('Error fetching brands:', err);
             return []; // Return an empty array or handle the error as needed
           });
       
-        const categoryPromise = axios.get(`http://localhost:8080/category`)
+        const categoryPromise = axios.get(`/category`)
           .then(res => JSON.parse(res.data))
           .catch(err => {
             console.error('Error fetching categories:', err);
@@ -61,7 +61,7 @@ export const heroDataLoader = () => {
       };
       
       export const BrandsPageLoader = () => {
-        const res = axios.get(`http://localhost:8080/brand`)
+        const res = axios.get(`/brand`)
         .then(res => {
           const brands = JSON.parse(res.data);
           return brands;
@@ -75,7 +75,7 @@ export const heroDataLoader = () => {
 
       export const fetchUserProfile = async (email, token) => {
         try {
-          const response = await axios.post('http://localhost:8080/api/user-profile', {
+          const response = await axios.post('/api/user-profile', {
             email:email,
         },
            {
@@ -97,7 +97,7 @@ export const heroDataLoader = () => {
           try {
             const token = localStorage.getItem('token');
             const email = localStorage.getItem('user');
-            const response = await axios.post('http://localhost:8080/api/user_cart', {
+            const response = await axios.post('/api/user_cart', {
               email: email,
           },
           {
@@ -120,7 +120,7 @@ export const heroDataLoader = () => {
         try {
           const token = localStorage.getItem('token');
           const email = localStorage.getItem('user');
-          const response = await axios.post(`http://localhost:8080/api/delete_product_from_cart/${productId}`, {
+          const response = await axios.post(`/api/delete_product_from_cart/${productId}`, {
             email: email,
         },
         {
@@ -141,7 +141,7 @@ export const heroDataLoader = () => {
         try {
           const token = localStorage.getItem('token');
           const email = localStorage.getItem('user');
-          const response = await axios.post(`http://localhost:8080/api/delete_all_products_from_cart`, {
+          const response = await axios.post(`/api/delete_all_products_from_cart`, {
             email: email,
         },
         {
@@ -164,7 +164,7 @@ export const heroDataLoader = () => {
           const token = localStorage.getItem('token');
           const email = localStorage.getItem('user');
           const amount = localStorage.getItem('amount');
-          const response = await axios.post(`http://localhost:8080/api/create_order`, {
+          const response = await axios.post(`/api/create_order`, {
             email: email,
             amount: amount,
         },
@@ -186,7 +186,7 @@ export const heroDataLoader = () => {
         try {
           const token = localStorage.getItem('token');
           const email = localStorage.getItem('user');
-          const response = await axios.post(`http://localhost:8080/api/get_orders`, {
+          const response = await axios.post(`/api/get_orders`, {
             email: email,
         },
         {

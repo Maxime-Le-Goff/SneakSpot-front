@@ -67,7 +67,7 @@ const SignUp = ({ handleDialog, setExistingUser }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/signup', data);
+      const response = await axios.post('/signup', data);
   
       if (response.data.success) {
         setUserCreated(true)

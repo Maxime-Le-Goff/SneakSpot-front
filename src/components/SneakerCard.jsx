@@ -21,7 +21,7 @@ const SneakerCard = ({ id, model, price, img, brand, description,color, rating, 
 				email: email,
 			};
 			try {
-				const response = await axios.post('http://localhost:8080/api/product_to_cart',data, {
+				const response = await axios.post('/api/product_to_cart',data, {
 					headers: {
 						'Authorization': `Bearer ${token}`
 					},
