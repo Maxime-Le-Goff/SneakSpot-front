@@ -21,6 +21,14 @@ import sneaker7 from './sneaker7.jpg'
 import sneaker8 from './sneaker8.jpg'
 import sneaker9 from './sneaker9.jpg'
 import sneaker10 from './sneaker10.jpg'
+import airJordan11 from './NikeAirJordan11.png'
+import airJordan1 from './nikeAirJordan.png'
+import airForce from './nikeAirForce.png'
+import reebookLeather from './reebokLeather.png'
+import reebookWhite from './reebokWhite.png'
+import shaq from './shaq.png'
+import stanSmith from './stanSmith.png'
+import superSmith from './superSmith.png'
 
 import shoe8 from './shoe8.svg'
 
@@ -50,6 +58,14 @@ export {
     sneaker8,
     sneaker9,
     sneaker10,
+    airJordan11,
+    airJordan1,
+    airForce,
+    reebookLeather,
+    reebookWhite,
+    shaq,
+    stanSmith,
+    superSmith,
 
     shoe8,
 

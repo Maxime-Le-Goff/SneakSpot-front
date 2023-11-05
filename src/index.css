@@ -107,7 +107,7 @@
 .main-image img {
 	height: 250px;
 	position: absolute;
-	top: 57%;
+	top: 20%;
 	z-index: 1;
 }
 .contentBox-02 {
